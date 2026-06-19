@@ -212,6 +212,22 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text
 .admin-btn-csv:hover{background:#475569;color:#f1f5f9}
 .admin-actions{display:flex;gap:8px;margin-bottom:24px}
 
+/* Password Modal */
+.pw-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:400;display:none;align-items:center;justify-content:center}
+.pw-overlay.open{display:flex}
+.pw-box{background:#1e293b;border-radius:20px;padding:32px 28px;width:320px;max-width:90vw;animation:slideUp .2s ease}
+.pw-title{font-size:18px;font-weight:700;color:#f1f5f9;margin-bottom:6px;text-align:center}
+.pw-sub{font-size:13px;color:#64748b;text-align:center;margin-bottom:24px}
+.pw-input{width:100%;background:#334155;border:2px solid #475569;border-radius:12px;padding:13px 16px;font-size:16px;color:#f1f5f9;font-family:inherit;text-align:center;letter-spacing:4px;outline:none;transition:border .15s}
+.pw-input:focus{border-color:#3182f6}
+.pw-input.error{border-color:#ef4444;animation:shake .3s ease}
+.pw-btn{width:100%;margin-top:14px;padding:13px;background:#3182f6;color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;transition:background .15s}
+.pw-btn:hover{background:#1a6fe8}
+.pw-cancel{width:100%;margin-top:8px;padding:10px;background:transparent;color:#64748b;border:none;border-radius:12px;font-size:13px;cursor:pointer;font-family:inherit}
+.pw-cancel:hover{color:#94a3b8}
+.pw-error{font-size:12px;color:#ef4444;text-align:center;margin-top:8px;min-height:16px}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
 /* Toast */
 .toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(20px);background:#191f28;color:#fff;padding:12px 20px;border-radius:12px;font-size:13px;font-weight:600;z-index:9999;opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
@@ -252,7 +268,6 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text
     </div>
     <div class="header-actions">
       <button class="btn btn-primary" onclick="openModal()">📋 최종 목록</button>
-      <button class="btn btn-ghost btn-sm" onclick="openAdmin()">⚙️ 관리자</button>
     </div>
   </div>
 </header>
@@ -304,6 +319,19 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text
       <button class="modal-close" id="modalCloseBtn">✕</button>
     </div>
     <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<!-- PASSWORD MODAL -->
+<div class="pw-overlay" id="pwOverlay">
+  <div class="pw-box">
+    <div class="pw-title">🔐 관리자 인증</div>
+    <div class="pw-sub">관리자 비밀번호를 입력해주세요</div>
+    <input class="pw-input" type="password" id="pwInput" placeholder="비밀번호" maxlength="20"
+      onkeydown="if(event.key==='Enter')checkAdminPw()">
+    <div class="pw-error" id="pwError"></div>
+    <button class="pw-btn" onclick="checkAdminPw()">확인</button>
+    <button class="pw-cancel" onclick="closePwModal()">취소</button>
   </div>
 </div>
 
@@ -958,11 +986,54 @@ function showToast(msg) {
 }
 
 // ── ADMIN ──
+var ADMIN_PW = 'baby2024!';  // ← 여기서 비밀번호 변경 가능
+
+// 숨겨진 관리자 진입: URL에 ?admin 붙이거나 로고를 5번 연속 탭
+var logoTapCount = 0;
+var logoTapTimer = null;
+document.querySelector('.logo').addEventListener('click', function() {
+  logoTapCount++;
+  clearTimeout(logoTapTimer);
+  if (logoTapCount >= 5) {
+    logoTapCount = 0;
+    openAdmin();
+  } else {
+    logoTapTimer = setTimeout(function() { logoTapCount = 0; }, 2000);
+  }
+});
+
+// URL ?admin 으로 접근 시 자동 열기
+if (window.location.search.indexOf('admin') !== -1) {
+  window.addEventListener('load', function() { openAdmin(); });
+}
+
 function openAdmin() {
-  var overlay = document.getElementById('adminOverlay');
-  overlay.classList.add('open');
-  renderAdminStats();
-  renderAdminTable();
+  document.getElementById('pwInput').value = '';
+  document.getElementById('pwError').textContent = '';
+  document.getElementById('pwInput').classList.remove('error');
+  document.getElementById('pwOverlay').classList.add('open');
+  setTimeout(function() { document.getElementById('pwInput').focus(); }, 100);
+}
+
+function closePwModal() {
+  document.getElementById('pwOverlay').classList.remove('open');
+}
+
+function checkAdminPw() {
+  var val = document.getElementById('pwInput').value;
+  if (val === ADMIN_PW) {
+    closePwModal();
+    document.getElementById('adminOverlay').classList.add('open');
+    renderAdminStats();
+    renderAdminTable();
+  } else {
+    var input = document.getElementById('pwInput');
+    var err = document.getElementById('pwError');
+    input.classList.add('error');
+    err.textContent = '❌ 비밀번호가 틀렸어요';
+    input.value = '';
+    setTimeout(function() { input.classList.remove('error'); }, 400);
+  }
 }
 
 function closeAdmin() {
