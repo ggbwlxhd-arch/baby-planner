@@ -9,325 +9,372 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#f2f4f6;
-  --card:#ffffff;
-  --blue:#3182f6;
-  --blue-light:#e8f1ff;
-  --orange:#ff8c00;
-  --orange-light:#fff3e0;
-  --text:#191f28;
-  --text2:#6b7684;
-  --text3:#b0b8c1;
-  --border:#e5e8eb;
-  --radius:16px;
-  --shadow:0 2px 12px rgba(0,0,0,0.06);
-  --shadow-md:0 4px 24px rgba(0,0,0,0.10);
+  --bg:#f2f4f6;--card:#fff;
+  --blue:#3182f6;--blue-light:#e8f1ff;
+  --yellow:#f5b800;--yellow-light:#fffbeb;--yellow-border:#f5b800;
+  --lime:#4caf50;--lime-light:#f1fdf2;--lime-border:#4caf50;
+  --orange:#ff8c00;--orange-light:#fff3e0;
+  --green:#22c55e;
+  --text:#191f28;--text2:#6b7684;--text3:#b0b8c1;
+  --border:#e5e8eb;--radius:16px;
+  --shadow:0 2px 12px rgba(0,0,0,.06);--shadow-md:0 4px 24px rgba(0,0,0,.12);
 }
 body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:14px;line-height:1.5}
 
-/* ── HEADER ── */
-.header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;padding:0 24px}
-.header-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:16px;height:60px}
-.logo{font-size:17px;font-weight:700;color:var(--text);white-space:nowrap;display:flex;align-items:center;gap:6px}
-.logo-badge{background:var(--blue);color:#fff;font-size:11px;font-weight:700;padding:2px 7px;border-radius:99px}
-.progress-wrap{flex:1;min-width:0;max-width:320px}
-.progress-label{font-size:11px;color:var(--text2);margin-bottom:4px;display:flex;justify-content:space-between;gap:8px}
-.progress-label span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* HEADER */
+.header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;padding:0 20px}
+.header-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:12px;height:58px}
+.logo{font-size:16px;font-weight:700;color:var(--text);white-space:nowrap;display:flex;align-items:center;gap:6px;cursor:pointer;user-select:none}
+.logo-badge{background:var(--blue);color:#fff;font-size:10px;font-weight:700;padding:2px 6px;border-radius:99px}
+.progress-wrap{flex:1;min-width:0;max-width:300px}
+.progress-label{font-size:11px;color:var(--text2);margin-bottom:3px;display:flex;justify-content:space-between}
 .progress-bar{height:6px;background:#e5e8eb;border-radius:99px;overflow:hidden}
-.progress-fill{height:100%;background:linear-gradient(90deg,var(--blue),#60a5fa);border-radius:99px;transition:width .4s ease}
-.header-actions{display:flex;gap:8px;align-items:center;flex-shrink:0}
-.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;border:none;transition:all .15s;font-family:inherit}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--blue),#60a5fa);border-radius:99px;transition:width .4s}
+.header-actions{display:flex;gap:8px;flex-shrink:0}
+.btn{display:inline-flex;align-items:center;gap:5px;padding:8px 14px;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;border:none;transition:all .15s;font-family:inherit}
 .btn-primary{background:var(--blue);color:#fff}
 .btn-primary:hover{background:#1a6fe8}
-.btn-ghost{background:transparent;color:var(--text2);border:1.5px solid var(--border)}
-.btn-ghost:hover{background:var(--bg)}
-.btn-sm{padding:6px 12px;font-size:12px}
 
-/* ── LAYOUT ── */
-.main{max-width:1280px;margin:0 auto;padding:24px 24px 80px;display:grid;grid-template-columns:320px 1fr;gap:24px;align-items:start}
+/* LAYOUT */
+.main{max-width:1280px;margin:0 auto;padding:20px 20px 100px;display:grid;grid-template-columns:300px 1fr;gap:20px;align-items:start}
 
-/* ── SIDEBAR ── */
-.sidebar{position:sticky;top:80px;display:flex;flex-direction:column;gap:16px}
+/* SIDEBAR */
+.sidebar{position:sticky;top:76px;display:flex;flex-direction:column;gap:14px}
 .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
 
-/* Budget Board */
-.budget-board{padding:20px}
-.budget-title{font-size:13px;font-weight:600;color:var(--text2);margin-bottom:12px}
-.budget-total{font-size:28px;font-weight:900;color:var(--text);line-height:1}
-.budget-total span{font-size:14px;font-weight:500;color:var(--text2)}
-.budget-save{margin-top:8px;display:flex;align-items:center;gap:6px;background:var(--orange-light);border-radius:10px;padding:8px 12px}
+/* Budget */
+.budget-board{padding:18px}
+.budget-title{font-size:12px;font-weight:600;color:var(--text2);margin-bottom:10px}
+.budget-total{font-size:26px;font-weight:900;color:var(--text);line-height:1}
+.budget-save{margin-top:8px;display:flex;align-items:center;background:var(--orange-light);border-radius:10px;padding:8px 12px}
 .budget-save-label{font-size:12px;color:var(--orange);font-weight:600}
-.budget-save-amt{font-size:16px;font-weight:700;color:var(--orange);margin-left:auto}
-.budget-bars{margin-top:16px;display:flex;flex-direction:column;gap:8px}
-.budget-bar-row{display:flex;flex-direction:column;gap:4px}
+.budget-save-amt{font-size:15px;font-weight:700;color:var(--orange);margin-left:auto}
+.budget-bars{margin-top:14px;display:flex;flex-direction:column;gap:8px}
+.budget-bar-row{display:flex;flex-direction:column;gap:3px}
 .budget-bar-label{display:flex;justify-content:space-between;font-size:11px;color:var(--text2)}
-.budget-bar-track{height:8px;background:#e5e8eb;border-radius:99px;overflow:hidden}
-.budget-bar-fill{height:100%;border-radius:99px;transition:width .5s ease}
-.fill-blue{background:var(--blue)}
-.fill-green{background:#22c55e}
-
-/* Floating bottom button */
-.fab-wrap{position:fixed;bottom:0;left:0;right:0;z-index:90;padding:12px 20px 20px;background:linear-gradient(to top,rgba(242,244,246,1) 60%,rgba(242,244,246,0));pointer-events:none}
-.fab-btn{pointer-events:all;width:100%;max-width:480px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:8px;padding:14px;background:var(--blue);color:#fff;border:none;border-radius:14px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;box-shadow:0 4px 20px rgba(49,130,246,.4);transition:all .15s}
-.fab-btn:hover{background:#1a6fe8;transform:translateY(-1px)}
-@media(min-width:901px){.fab-wrap{display:none}}
+.budget-bar-track{height:7px;background:#e5e8eb;border-radius:99px;overflow:hidden}
+.budget-bar-fill{height:100%;border-radius:99px;transition:width .5s}
+.fill-yellow{background:var(--yellow)}.fill-lime{background:var(--lime)}
 
 /* Accordion */
 .accordion{border-top:1px solid var(--border)}
 .accordion-item{border-bottom:1px solid var(--border)}
-.accordion-head{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;cursor:pointer;user-select:none;background:#fff;transition:background .1s}
+.accordion-head{display:flex;align-items:center;justify-content:space-between;padding:13px 18px;cursor:pointer;user-select:none;transition:background .1s}
 .accordion-head:hover{background:var(--bg)}
-.accordion-head-left{display:flex;align-items:center;gap:10px}
-.accordion-q-num{width:22px;height:22px;background:var(--blue-light);color:var(--blue);border-radius:6px;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.accordion-head-left{display:flex;align-items:center;gap:8px}
+.accordion-q-num{width:20px;height:20px;background:var(--blue-light);color:var(--blue);border-radius:5px;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .accordion-q-text{font-size:13px;font-weight:600}
 .accordion-q-check{font-size:11px;color:var(--blue);font-weight:600;margin-left:4px}
-.accordion-arrow{font-size:10px;color:var(--text3);transition:transform .2s;flex-shrink:0}
+.accordion-arrow{font-size:10px;color:var(--text3);transition:transform .2s}
 .accordion-arrow.open{transform:rotate(180deg)}
-.accordion-body{padding:0 20px 16px;display:none}
+.accordion-body{padding:0 18px 14px;display:none}
 .accordion-body.open{display:block}
 .q-options{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
-.q-opt{padding:6px 12px;border-radius:8px;border:1.5px solid var(--border);font-size:12px;font-weight:500;cursor:pointer;transition:all .15s;background:#fff}
+.q-opt{padding:5px 11px;border-radius:8px;border:1.5px solid var(--border);font-size:12px;cursor:pointer;transition:all .15s;background:#fff}
 .q-opt:hover{border-color:var(--blue);color:var(--blue)}
 .q-opt.selected{border-color:var(--blue);background:var(--blue-light);color:var(--blue);font-weight:700}
-.q-hint{font-size:11px;color:var(--text3);margin-top:6px}
+.q-hint{font-size:11px;color:var(--text3);margin-top:5px}
 
-/* ── RIGHT ── */
-.right-area{display:flex;flex-direction:column;gap:16px}
-.category-chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{padding:7px 14px;border-radius:99px;border:1.5px solid var(--border);font-size:12px;font-weight:600;cursor:pointer;background:#fff;transition:all .15s;display:flex;align-items:center;gap:4px}
+/* RIGHT */
+.right-area{display:flex;flex-direction:column;gap:14px}
+.category-chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{padding:6px 13px;border-radius:99px;border:1.5px solid var(--border);font-size:12px;font-weight:600;cursor:pointer;background:#fff;transition:all .15s}
 .chip:hover{border-color:var(--blue);color:var(--blue)}
 .chip.active{background:var(--blue);color:#fff;border-color:var(--blue)}
 .chip-count{font-size:10px;opacity:.7}
+.items-grid{display:flex;flex-direction:column;gap:14px}
 
-.items-grid{display:flex;flex-direction:column;gap:12px}
-
-/* Item Card */
+/* ── ITEM CARD ── */
 .item-card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .2s}
 .item-card:hover{box-shadow:var(--shadow-md)}
-.item-card.excluded{opacity:.45}
-.item-card.conditional-hidden{display:none}
-.item-card-head{display:flex;align-items:center;justify-content:space-between;padding:14px 16px 10px}
-.item-cat-badge{font-size:10px;padding:2px 8px;border-radius:99px;font-weight:600}
-.cat-sleep{background:#e0f2fe;color:#0369a1}
-.cat-feeding{background:#fce7f3;color:#9d174d}
-.cat-diaper{background:#ecfdf5;color:#065f46}
-.cat-outing{background:#fff7ed;color:#9a3412}
-.cat-bath{background:#f5f3ff;color:#5b21b6}
-.cat-play{background:#fffbeb;color:#92400e}
+.item-card.excluded{opacity:.4}
+
+.item-card-head{display:flex;align-items:center;padding:13px 15px 10px;gap:8px}
+.item-cat-badge{font-size:10px;padding:2px 8px;border-radius:99px;font-weight:600;flex-shrink:0}
+.cat-sleep{background:#e0f2fe;color:#0369a1}.cat-feeding{background:#fce7f3;color:#9d174d}
+.cat-diaper{background:#ecfdf5;color:#065f46}.cat-outing{background:#fff7ed;color:#9a3412}
+.cat-bath{background:#f5f3ff;color:#5b21b6}.cat-play{background:#fffbeb;color:#92400e}
 .cat-clothes{background:#fdf4ff;color:#7e22ce}
-.item-name{font-size:15px;font-weight:700;margin-left:auto;flex:1;padding:0 10px}
-.item-exclude-btn{padding:4px 10px;border-radius:8px;font-size:11px;font-weight:600;cursor:pointer;border:1.5px solid var(--border);background:#fff;color:var(--text2);transition:all .15s}
+.item-name-head{font-size:15px;font-weight:700;flex:1}
+.item-exclude-btn{padding:4px 10px;border-radius:7px;font-size:11px;font-weight:600;cursor:pointer;border:1.5px solid var(--border);background:#fff;color:var(--text2);flex-shrink:0}
 .item-exclude-btn:hover{border-color:#ef4444;color:#ef4444}
 .item-exclude-btn.restore{border-color:var(--blue);color:var(--blue)}
-.item-exclude-btn.restore:hover{background:var(--blue-light)}
 
-.item-options{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 16px 14px}
-.item-opt{border:2px solid var(--border);border-radius:12px;padding:12px;cursor:pointer;transition:all .15s;position:relative}
-.item-opt:hover{border-color:var(--blue)}
-.item-opt.selected-steady{border-color:var(--blue);background:var(--blue-light)}
-.item-opt.selected-value{border-color:var(--orange);background:var(--orange-light)}
-.item-opt-badge{font-size:10px;font-weight:700;padding:2px 7px;border-radius:99px;display:inline-flex;align-items:center;gap:3px;margin-bottom:6px}
-.badge-steady{background:var(--blue);color:#fff}
-.badge-value{background:var(--orange);color:#fff}
-.item-opt-name{font-size:12px;font-weight:600;color:var(--text);line-height:1.4}
-.item-opt-brand{font-size:11px;color:var(--text2);margin-top:2px}
-.item-opt-price{font-size:14px;font-weight:700;color:var(--text);margin-top:6px}
-.item-opt-save{font-size:11px;color:#22c55e;font-weight:600;margin-top:2px}
-.item-opt-review{font-size:10px;color:var(--text3);margin-top:3px}
-.item-opt-coupang{margin-top:8px}
-.coupang-btn{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;color:var(--text2);border:1px solid var(--border);padding:3px 8px;border-radius:6px;text-decoration:none;cursor:pointer;background:#fff;transition:all .15s}
-.coupang-btn:hover{border-color:var(--orange);color:var(--orange)}
-.item-opt-check{position:absolute;top:10px;right:10px;font-size:16px}
+/* 선택 버튼 영역 (기본 카드) */
+.item-type-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 15px 15px}
+.type-btn{padding:12px 8px;border-radius:12px;border:2px solid var(--border);cursor:pointer;text-align:center;transition:all .15s;background:#fff;font-family:inherit}
+.type-btn:hover{box-shadow:var(--shadow-md)}
+.type-btn-icon{font-size:20px;display:block;margin-bottom:4px}
+.type-btn-label{font-size:12px;font-weight:700;display:block;margin-bottom:2px}
+.type-btn-sub{font-size:10px;color:var(--text2);display:block}
 
-.empty-state{text-align:center;padding:60px 20px;color:var(--text2)}
-.empty-state-icon{font-size:48px;margin-bottom:12px}
+/* 스테디 = 노란색 */
+.type-btn.steady-btn{border-color:var(--yellow);background:var(--yellow-light)}
+.type-btn.steady-btn .type-btn-label{color:#92620a}
+.type-btn.steady-btn:hover{background:#fef3c7;border-color:#d97706}
+.type-btn.steady-selected{border-color:var(--yellow);background:var(--yellow);box-shadow:0 2px 12px rgba(245,184,0,.4)}
+.type-btn.steady-selected .type-btn-label{color:#fff}
+.type-btn.steady-selected .type-btn-sub{color:rgba(255,255,255,.8)}
 
-/* ── MODAL ── */
+/* 가성비 = 연두색 */
+.type-btn.value-btn{border-color:var(--lime);background:var(--lime-light)}
+.type-btn.value-btn .type-btn-label{color:#166534}
+.type-btn.value-btn:hover{background:#dcfce7;border-color:#16a34a}
+.type-btn.value-selected{border-color:var(--lime);background:var(--lime);box-shadow:0 2px 12px rgba(76,175,80,.4)}
+.type-btn.value-selected .type-btn-label{color:#fff}
+.type-btn.value-selected .type-btn-sub{color:rgba(255,255,255,.8)}
+
+/* 선택된 제품 표시 */
+.item-selected-prod{margin:0 15px 14px;padding:10px 13px;border-radius:11px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.item-selected-prod.type-s{background:var(--yellow-light);border:1.5px solid var(--yellow)}
+.item-selected-prod.type-v{background:var(--lime-light);border:1.5px solid var(--lime)}
+.item-selected-prod.type-none{background:var(--bg);border:1.5px dashed var(--border)}
+.sel-prod-name{font-size:12px;font-weight:700;color:var(--text)}
+.sel-prod-price{font-size:11px;font-weight:600;margin-top:1px}
+.item-selected-prod.type-s .sel-prod-price{color:#92620a}
+.item-selected-prod.type-v .sel-prod-price{color:#166534}
+.item-selected-prod.type-none .sel-prod-name{color:var(--text3);font-weight:400}
+.change-prod-btn{font-size:11px;font-weight:600;color:var(--text2);border:1.5px solid var(--border);background:#fff;padding:4px 10px;border-radius:7px;cursor:pointer;white-space:nowrap;font-family:inherit}
+
+/* ── 제품 선택 팝업 모달 ── */
+.prod-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:250;display:none;align-items:flex-end;justify-content:center}
+.prod-modal-overlay.open{display:flex}
+.prod-modal-box{background:#fff;width:100%;max-width:600px;max-height:90vh;border-radius:20px 20px 0 0;overflow:hidden;display:flex;flex-direction:column;animation:slideUp .25s ease}
+@keyframes slideUp{from{transform:translateY(50px);opacity:0}to{transform:translateY(0);opacity:1}}
+.prod-modal-handle{width:36px;height:4px;background:#e5e8eb;border-radius:99px;margin:10px auto 0}
+.prod-modal-header{padding:14px 18px 12px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.prod-modal-title{font-size:16px;font-weight:700}
+.prod-modal-close{width:30px;height:30px;border-radius:99px;background:var(--bg);border:none;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;color:var(--text2)}
+.prod-modal-body{overflow-y:auto;flex:1;padding:16px}
+
+/* 팝업 내 탭 */
+.pm-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.pm-tab{padding:10px;border-radius:11px;border:2px solid var(--border);cursor:pointer;text-align:center;font-family:inherit;font-size:12px;font-weight:700;background:#fff;transition:all .15s}
+.pm-tab.act-s{border-color:var(--yellow);background:var(--yellow);color:#fff}
+.pm-tab.act-v{border-color:var(--lime);background:var(--lime);color:#fff}
+.pm-tab:not(.act-s):not(.act-v){color:var(--text2)}
+
+/* 팝업 내 비교표 */
+.pm-compare{background:var(--bg);border-radius:10px;overflow:hidden;margin-bottom:14px}
+.pm-compare-title{font-size:11px;font-weight:700;color:var(--text2);padding:8px 12px;border-bottom:1px solid var(--border)}
+.pm-compare table{width:100%;border-collapse:collapse}
+.pm-compare th{font-size:11px;font-weight:700;color:var(--text2);padding:7px 10px;text-align:left;background:#edf0f3}
+.pm-compare td{padding:7px 10px;font-size:12px;border-top:1px solid var(--border);vertical-align:top}
+.pm-compare td:first-child{font-weight:600;color:var(--text2);white-space:nowrap;width:70px}
+.rank-list{display:flex;flex-direction:column;gap:3px}
+.rank-item{display:flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--text)}
+.rank-medal{font-size:12px;width:18px;flex-shrink:0}
+
+/* 팝업 내 제품 카드 */
+.pm-prod-list{display:flex;flex-direction:column;gap:10px}
+.pm-prod-card{border:2px solid var(--border);border-radius:12px;overflow:hidden;background:#fff;transition:border-color .15s}
+.pm-prod-card.sel-s{border-color:var(--yellow)}
+.pm-prod-card.sel-v{border-color:var(--lime)}
+.pm-prod-top{padding:13px 13px 10px;cursor:pointer}
+.pm-prod-top:hover{background:#fafafa}
+.pm-prod-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:6px}
+.pm-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:99px}
+.badge-s{background:var(--yellow);color:#fff}
+.badge-v{background:var(--lime);color:#fff}
+.pm-chk{width:20px;height:20px;border-radius:99px;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0;transition:all .15s}
+.pm-prod-card.sel-s .pm-chk{background:var(--yellow);border-color:var(--yellow);color:#fff}
+.pm-prod-card.sel-v .pm-chk{background:var(--lime);border-color:var(--lime);color:#fff}
+.pm-prod-name{font-size:13px;font-weight:700;margin-bottom:1px}
+.pm-prod-brand{font-size:11px;color:var(--text2);margin-bottom:6px}
+.pm-prod-pts{display:flex;flex-direction:column;gap:3px;margin-bottom:8px}
+.pm-prod-pt{font-size:11px;color:var(--text2);display:flex;align-items:flex-start;gap:4px;line-height:1.45}
+.dot-s{width:4px;height:4px;border-radius:99px;background:var(--yellow);margin-top:5px;flex-shrink:0}
+.dot-v{width:4px;height:4px;border-radius:99px;background:var(--lime);margin-top:5px;flex-shrink:0}
+.pm-price-row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.pm-price{font-size:15px;font-weight:900;color:var(--text)}
+.pm-save{font-size:10px;color:var(--green);font-weight:600;margin-top:1px}
+.pm-detail-btn{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;color:var(--text2);border:1.5px solid var(--border);background:#f8f9fa;padding:5px 10px;border-radius:8px;cursor:pointer;text-decoration:none;transition:all .15s;white-space:nowrap;font-family:inherit}
+.pm-detail-btn:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-light)}
+.pm-divider{height:1px;background:var(--border);margin:0 13px}
+.pm-select-area{padding:9px 13px}
+.pm-select-btn{width:100%;padding:9px;border-radius:9px;font-size:13px;font-weight:700;border:none;cursor:pointer;font-family:inherit;transition:all .15s}
+.pm-sbtn-s{background:var(--yellow-light);color:#92620a}
+.pm-sbtn-s:hover{background:var(--yellow);color:#fff}
+.pm-prod-card.sel-s .pm-sbtn-s{background:var(--yellow);color:#fff}
+.pm-sbtn-v{background:var(--lime-light);color:#166534}
+.pm-sbtn-v:hover{background:var(--lime);color:#fff}
+.pm-prod-card.sel-v .pm-sbtn-v{background:var(--lime);color:#fff}
+.pnl{display:none}.pnl.on{display:block}
+
+/* FINAL MODAL */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;display:none;align-items:flex-end;justify-content:center}
 .modal-overlay.open{display:flex}
-.modal-box{background:#fff;width:100%;max-width:640px;max-height:92vh;border-radius:20px 20px 0 0;overflow:hidden;display:flex;flex-direction:column;margin:0 auto;animation:slideUp .25s ease}
-@keyframes slideUp{from{transform:translateY(60px);opacity:0}to{transform:translateY(0);opacity:1}}
-.modal-handle{width:36px;height:4px;background:#e5e8eb;border-radius:99px;margin:12px auto 0}
-.modal-header{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
-.modal-title{font-size:17px;font-weight:700}
-.modal-close{width:32px;height:32px;border-radius:99px;background:var(--bg);border:none;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;color:var(--text2)}
-.modal-close:hover{background:#e5e8eb}
-.modal-body{overflow-y:auto;padding:20px;flex:1}
-
-/* Modal stats */
-.modal-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
-.stat-card{background:var(--bg);border-radius:12px;padding:14px;text-align:center}
-.stat-val{font-size:22px;font-weight:900;color:var(--text)}
+.modal-box{background:#fff;width:100%;max-width:640px;max-height:92vh;border-radius:20px 20px 0 0;overflow:hidden;display:flex;flex-direction:column;animation:slideUp .25s ease}
+.modal-handle{width:36px;height:4px;background:#e5e8eb;border-radius:99px;margin:10px auto 0}
+.modal-header{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.modal-title{font-size:16px;font-weight:700}
+.modal-close{width:30px;height:30px;border-radius:99px;background:var(--bg);border:none;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;color:var(--text2)}
+.modal-body{overflow-y:auto;padding:18px;flex:1}
+.modal-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.stat-card{background:var(--bg);border-radius:11px;padding:12px;text-align:center}
+.stat-val{font-size:18px;font-weight:900}
 .stat-label{font-size:11px;color:var(--text2);margin-top:2px}
-
-/* Purchase progress */
-.purchase-progress{background:var(--bg);border-radius:12px;padding:14px;margin-bottom:20px}
-.purchase-progress-label{font-size:12px;font-weight:600;color:var(--text2);margin-bottom:8px;display:flex;justify-content:space-between}
+.purchase-progress{background:var(--bg);border-radius:11px;padding:12px;margin-bottom:16px}
+.purchase-progress-label{font-size:12px;font-weight:600;color:var(--text2);margin-bottom:7px;display:flex;justify-content:space-between}
 .purchase-bar{height:10px;background:#e5e8eb;border-radius:99px;overflow:hidden}
 .purchase-fill{height:100%;background:linear-gradient(90deg,#22c55e,#86efac);border-radius:99px;transition:width .4s}
-
-/* Modal items */
-.modal-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)}
+.modal-item{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--border)}
 .modal-item:last-child{border-bottom:none}
 .modal-check{width:22px;height:22px;border:2px solid var(--border);border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s;font-size:12px}
 .modal-check.checked{background:var(--blue);border-color:var(--blue);color:#fff}
 .modal-item-info{flex:1;min-width:0}
 .modal-item-name{font-size:13px;font-weight:600}
 .modal-item-sub{font-size:11px;color:var(--text2);margin-top:1px}
-.modal-item-price{font-size:14px;font-weight:700;color:var(--text);white-space:nowrap}
-.modal-item-buy{padding:5px 12px;background:var(--orange);color:#fff;border:none;border-radius:8px;font-size:11px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
+.modal-item-price{font-size:13px;font-weight:700;white-space:nowrap}
+.modal-item-buy{padding:6px 12px;background:var(--orange);color:#fff;border:none;border-radius:8px;font-size:11px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:3px;white-space:nowrap;font-family:inherit}
 .modal-item-buy:hover{background:#e67e00}
-
-/* Share buttons */
-.share-section{margin-top:20px;padding-top:20px;border-top:1px solid var(--border)}
-.share-title{font-size:13px;font-weight:600;color:var(--text2);margin-bottom:12px}
-.share-btns{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.share-btn{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 8px;border-radius:12px;border:1.5px solid var(--border);cursor:pointer;background:#fff;font-size:11px;font-weight:600;color:var(--text2);transition:all .15s}
+.modal-item-buy.disabled{opacity:.4;cursor:default;pointer-events:none}
+.share-section{margin-top:18px;padding-top:18px;border-top:1px solid var(--border)}
+.share-title{font-size:13px;font-weight:600;color:var(--text2);margin-bottom:10px}
+.share-btns{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+.share-btn{display:flex;flex-direction:column;align-items:center;gap:5px;padding:10px 6px;border-radius:11px;border:1.5px solid var(--border);cursor:pointer;background:#fff;font-size:11px;font-weight:600;color:var(--text2);transition:all .15s}
 .share-btn:hover{border-color:var(--blue);color:var(--blue)}
-.share-btn-icon{font-size:22px}
-.share-img-btn{background:var(--bg);border-color:var(--border);color:var(--text2)}
+.share-btn-icon{font-size:20px}
 
-/* ── ADMIN DASHBOARD ── */
-.admin-overlay{position:fixed;inset:0;background:#0f172a;z-index:300;display:none;flex-direction:column;overflow-y:auto}
-.admin-overlay.open{display:flex}
-.admin-inner{max-width:960px;margin:0 auto;padding:32px 24px;width:100%}
-.admin-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:32px}
-.admin-title{font-size:22px;font-weight:700;color:#f1f5f9;display:flex;align-items:center;gap:10px}
-.admin-close{padding:8px 18px;background:#334155;color:#94a3b8;border:none;border-radius:10px;cursor:pointer;font-size:13px;font-weight:600}
-.admin-close:hover{background:#475569;color:#f1f5f9}
-.admin-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px}
-.admin-stat{background:#1e293b;border-radius:14px;padding:20px}
-.admin-stat-val{font-size:28px;font-weight:900;color:#f1f5f9}
-.admin-stat-label{font-size:12px;color:#64748b;margin-top:4px}
-.admin-section-title{font-size:15px;font-weight:700;color:#94a3b8;margin-bottom:12px;display:flex;align-items:center;gap:8px}
-.admin-table-wrap{background:#1e293b;border-radius:14px;overflow:hidden;margin-bottom:24px}
-.admin-table{width:100%;border-collapse:collapse}
-.admin-table th{background:#0f172a;color:#64748b;font-size:12px;font-weight:600;padding:10px 16px;text-align:left;border-bottom:1px solid #334155}
-.admin-table td{padding:10px 16px;font-size:12px;color:#cbd5e1;border-bottom:1px solid #1e293b}
-.admin-table tr:last-child td{border-bottom:none}
-.admin-table input{background:#334155;border:1px solid #475569;border-radius:6px;padding:4px 8px;font-size:11px;color:#f1f5f9;width:100%;font-family:inherit}
-.admin-btn{padding:8px 16px;border-radius:10px;font-size:12px;font-weight:600;cursor:pointer;border:none;transition:all .15s}
-.admin-btn-save{background:#3182f6;color:#fff}
-.admin-btn-csv{background:#334155;color:#94a3b8}
-.admin-btn-csv:hover{background:#475569;color:#f1f5f9}
-.admin-actions{display:flex;gap:8px;margin-bottom:24px}
-
-/* Password Modal */
+/* PW MODAL */
 .pw-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:400;display:none;align-items:center;justify-content:center}
 .pw-overlay.open{display:flex}
-.pw-box{background:#1e293b;border-radius:20px;padding:32px 28px;width:320px;max-width:90vw;animation:slideUp .2s ease}
-.pw-title{font-size:18px;font-weight:700;color:#f1f5f9;margin-bottom:6px;text-align:center}
-.pw-sub{font-size:13px;color:#64748b;text-align:center;margin-bottom:24px}
-.pw-input{width:100%;background:#334155;border:2px solid #475569;border-radius:12px;padding:13px 16px;font-size:16px;color:#f1f5f9;font-family:inherit;text-align:center;letter-spacing:4px;outline:none;transition:border .15s}
-.pw-input:focus{border-color:#3182f6}
+.pw-box{background:#1e293b;border-radius:18px;padding:28px 24px;width:300px;max-width:90vw;animation:slideUp .2s ease}
+.pw-title{font-size:17px;font-weight:700;color:#f1f5f9;text-align:center;margin-bottom:4px}
+.pw-sub{font-size:12px;color:#64748b;text-align:center;margin-bottom:20px}
+.pw-input{width:100%;background:#334155;border:2px solid #475569;border-radius:11px;padding:12px;font-size:15px;color:#f1f5f9;font-family:inherit;text-align:center;letter-spacing:3px;outline:none;transition:border .15s}
+.pw-input:focus{border-color:var(--blue)}
 .pw-input.error{border-color:#ef4444;animation:shake .3s ease}
-.pw-btn{width:100%;margin-top:14px;padding:13px;background:#3182f6;color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;transition:background .15s}
-.pw-btn:hover{background:#1a6fe8}
-.pw-cancel{width:100%;margin-top:8px;padding:10px;background:transparent;color:#64748b;border:none;border-radius:12px;font-size:13px;cursor:pointer;font-family:inherit}
-.pw-cancel:hover{color:#94a3b8}
-.pw-error{font-size:12px;color:#ef4444;text-align:center;margin-top:8px;min-height:16px}
-@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.pw-btn{width:100%;margin-top:12px;padding:12px;background:var(--blue);color:#fff;border:none;border-radius:11px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit}
+.pw-cancel{width:100%;margin-top:7px;padding:8px;background:transparent;color:#64748b;border:none;border-radius:11px;font-size:12px;cursor:pointer;font-family:inherit}
+.pw-error{font-size:12px;color:#ef4444;text-align:center;margin-top:6px;min-height:16px}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
 
-/* Toast */
-.toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(20px);background:#191f28;color:#fff;padding:12px 20px;border-radius:12px;font-size:13px;font-weight:600;z-index:9999;opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap}
+/* ADMIN */
+.admin-overlay{position:fixed;inset:0;background:#0f172a;z-index:300;display:none;flex-direction:column;overflow-y:auto}
+.admin-overlay.open{display:flex}
+.admin-inner{max-width:960px;margin:0 auto;padding:28px 20px;width:100%}
+.admin-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
+.admin-title{font-size:20px;font-weight:700;color:#f1f5f9}
+.admin-close{padding:7px 16px;background:#334155;color:#94a3b8;border:none;border-radius:9px;cursor:pointer;font-size:13px;font-weight:600;font-family:inherit}
+.admin-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px}
+.admin-stat{background:#1e293b;border-radius:13px;padding:18px}
+.admin-stat-val{font-size:26px;font-weight:900;color:#f1f5f9}
+.admin-stat-label{font-size:12px;color:#64748b;margin-top:3px}
+.admin-section-title{font-size:14px;font-weight:700;color:#94a3b8;margin-bottom:10px}
+.admin-table-wrap{background:#1e293b;border-radius:13px;overflow:hidden;margin-bottom:20px}
+.admin-table{width:100%;border-collapse:collapse}
+.admin-table th{background:#0f172a;color:#64748b;font-size:11px;font-weight:600;padding:9px 14px;text-align:left;border-bottom:1px solid #334155}
+.admin-table td{padding:9px 14px;font-size:11px;color:#cbd5e1;border-bottom:1px solid #1e293b}
+.admin-table tr:last-child td{border-bottom:none}
+.admin-table input{background:#334155;border:1px solid #475569;border-radius:5px;padding:4px 7px;font-size:11px;color:#f1f5f9;width:100%;font-family:inherit}
+.admin-btn{padding:7px 14px;border-radius:9px;font-size:12px;font-weight:600;cursor:pointer;border:none;font-family:inherit}
+.admin-btn-save{background:var(--blue);color:#fff}
+.admin-btn-csv{background:#334155;color:#94a3b8}
+.admin-actions{display:flex;gap:7px;margin-bottom:20px}
+
+/* FAB */
+.fab-wrap{position:fixed;bottom:0;left:0;right:0;z-index:90;padding:10px 18px 18px;background:linear-gradient(to top,rgba(242,244,246,1) 55%,rgba(242,244,246,0));pointer-events:none}
+.fab-btn{pointer-events:all;width:100%;max-width:480px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:7px;padding:14px;background:var(--blue);color:#fff;border:none;border-radius:13px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;box-shadow:0 4px 18px rgba(49,130,246,.4);transition:all .15s}
+.fab-btn:hover{background:#1a6fe8}
+@media(min-width:901px){.fab-wrap{display:none}}
+
+/* TOAST */
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(18px);background:#191f28;color:#fff;padding:11px 18px;border-radius:11px;font-size:13px;font-weight:600;z-index:9999;opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
-/* ── RESPONSIVE ── */
-@media(max-width:900px){
-  .main{grid-template-columns:1fr;padding:16px 16px 80px}
-  .sidebar{position:static}
-  .modal-box{max-width:100%;border-radius:20px 20px 0 0}
-}
-@media(max-width:600px){
-  .header-inner{gap:10px}
-  .logo-badge{display:none}
-  .progress-wrap{display:none}
-  .budget-total{font-size:22px}
-  .modal-stats{grid-template-columns:repeat(3,1fr)}
-  .stat-val{font-size:16px}
-  .admin-stats{grid-template-columns:1fr}
-  .share-btns{grid-template-columns:repeat(4,1fr)}
-}
+.empty-state{text-align:center;padding:50px 20px;color:var(--text2)}
+.empty-state-icon{font-size:40px;margin-bottom:10px}
+
+@media(max-width:900px){.main{grid-template-columns:1fr;padding:14px 14px 100px}.sidebar{position:static}}
+@media(max-width:580px){.progress-wrap{display:none}.logo-badge{display:none}}
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <header class="header">
   <div class="header-inner">
-    <div class="logo">
-      👶 출산준비물 플래너
-      <span class="logo-badge">Beta</span>
-    </div>
+    <div class="logo" id="logoEl">👶 출산준비물 플래너<span class="logo-badge">Beta</span></div>
     <div class="progress-wrap">
       <div class="progress-label">
-        <span id="progressText">진행도 0%</span>
-        <span id="progressCount">0 / 25개</span>
+        <span id="progressText">구매 완료 0%</span>
+        <span id="progressCount">0 / 26개</span>
       </div>
       <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
     </div>
     <div class="header-actions">
-      <button class="btn btn-primary" onclick="openModal()">📋 최종 목록</button>
+      <button class="btn btn-primary" onclick="openFinalModal()">📋 최종 목록</button>
     </div>
   </div>
 </header>
 
-<!-- MAIN -->
 <div class="main">
-  <!-- SIDEBAR -->
   <aside class="sidebar">
-    <!-- Budget Board -->
     <div class="card budget-board">
       <div class="budget-title">💰 현재 예상 비용</div>
-      <div class="budget-total"><span id="currentTotal">0</span><span>원</span></div>
+      <div class="budget-total" id="currentTotal">0원</div>
       <div class="budget-save">
         <span class="budget-save-label">✨ 절약 금액</span>
         <span class="budget-save-amt" id="saveAmount">0원</span>
       </div>
       <div class="budget-bars">
         <div class="budget-bar-row">
-          <div class="budget-bar-label"><span>👑 스테디셀러 기준</span><span id="steadyTotalLabel">0원</span></div>
-          <div class="budget-bar-track"><div class="budget-bar-fill fill-blue" id="steadyBar" style="width:100%"></div></div>
+          <div class="budget-bar-label"><span>👑 스테디 기준</span><span id="steadyTotalLabel">0원</span></div>
+          <div class="budget-bar-track"><div class="budget-bar-fill fill-yellow" id="steadyBar" style="width:100%"></div></div>
         </div>
         <div class="budget-bar-row">
-          <div class="budget-bar-label"><span>💡 내 선택 기준</span><span id="myTotalLabel">0원</span></div>
-          <div class="budget-bar-track"><div class="budget-bar-fill fill-green" id="myBar" style="width:100%"></div></div>
+          <div class="budget-bar-label"><span>💡 내 선택</span><span id="myTotalLabel">0원</span></div>
+          <div class="budget-bar-track"><div class="budget-bar-fill fill-lime" id="myBar" style="width:100%"></div></div>
         </div>
       </div>
     </div>
-
-    <!-- Q&A Accordion -->
     <div class="card" style="overflow:visible">
-      <div style="padding:14px 20px 2px;font-size:13px;font-weight:700">🎯 내 상황에 맞게 최적화</div>
+      <div style="padding:13px 18px 2px;font-size:13px;font-weight:700">🎯 내 상황에 맞게 최적화</div>
       <div class="accordion" id="accordionWrap"></div>
     </div>
   </aside>
 
-  <!-- RIGHT -->
   <div class="right-area">
     <div class="category-chips" id="categoryChips"></div>
     <div class="items-grid" id="itemsGrid"></div>
   </div>
 </div>
 
-<!-- FINAL MODAL -->
-<div class="modal-overlay" id="modalOverlay">
-  <div class="modal-box" id="modalBox">
-    <div class="modal-handle"></div>
-    <div class="modal-header">
-      <div class="modal-title">📋 최종 준비물 목록</div>
-      <button class="modal-close" id="modalCloseBtn">✕</button>
+<!-- FAB -->
+<div class="fab-wrap">
+  <button class="fab-btn" onclick="openFinalModal()">📋 최종 목록 보기</button>
+</div>
+
+<!-- 제품 선택 팝업 모달 -->
+<div class="prod-modal-overlay" id="prodModalOverlay">
+  <div class="prod-modal-box" id="prodModalBox">
+    <div class="prod-modal-handle"></div>
+    <div class="prod-modal-header">
+      <div class="prod-modal-title" id="prodModalTitle">제품 선택</div>
+      <button class="prod-modal-close" id="prodModalClose">✕</button>
     </div>
-    <div class="modal-body" id="modalBody"></div>
+    <div class="prod-modal-body" id="prodModalBody"></div>
   </div>
 </div>
 
-<!-- PASSWORD MODAL -->
+<!-- 최종 목록 모달 -->
+<div class="modal-overlay" id="finalModalOverlay">
+  <div class="modal-box">
+    <div class="modal-handle"></div>
+    <div class="modal-header">
+      <div class="modal-title">📋 최종 준비물 목록</div>
+      <button class="modal-close" id="finalModalClose">✕</button>
+    </div>
+    <div class="modal-body" id="finalModalBody"></div>
+  </div>
+</div>
+
+<!-- PW MODAL -->
 <div class="pw-overlay" id="pwOverlay">
   <div class="pw-box">
     <div class="pw-title">🔐 관리자 인증</div>
-    <div class="pw-sub">관리자 비밀번호를 입력해주세요</div>
-    <input class="pw-input" type="password" id="pwInput" placeholder="비밀번호" maxlength="20"
+    <div class="pw-sub">비밀번호를 입력해주세요</div>
+    <input class="pw-input" type="password" id="pwInput" maxlength="20"
       onkeydown="if(event.key==='Enter')checkAdminPw()">
     <div class="pw-error" id="pwError"></div>
     <button class="pw-btn" onclick="checkAdminPw()">확인</button>
@@ -346,772 +393,621 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text
     <div class="admin-section-title">🔗 쿠팡 파트너스 링크 관리</div>
     <div class="admin-actions">
       <button class="admin-btn admin-btn-save" onclick="saveAdminLinks()">💾 저장</button>
-      <button class="admin-btn admin-btn-csv" onclick="exportCSV()">📥 CSV 내보내기</button>
+      <button class="admin-btn admin-btn-csv" onclick="exportCSV()">📥 CSV</button>
     </div>
     <div class="admin-table-wrap">
-      <table class="admin-table" id="adminTable">
-        <thead><tr>
-          <th>카테고리</th><th>타입</th><th>상품명 (수정 가능)</th><th>쿠팡 URL</th>
-        </tr></thead>
+      <table class="admin-table">
+        <thead><tr><th>아이템</th><th>타입</th><th>상품명 (수정 가능)</th><th>쿠팡 URL</th></tr></thead>
         <tbody id="adminTableBody"></tbody>
       </table>
     </div>
   </div>
 </div>
 
-<!-- FLOATING BOTTOM BUTTON (모바일) -->
-<div class="fab-wrap">
-  <button class="fab-btn" onclick="openModal()">📋 최종 목록 보기</button>
-</div>
-
-<!-- TOAST -->
 <div class="toast" id="toast"></div>
 
 <script>
 'use strict';
 
-// ── DATA ──
 var ITEMS = [
   {id:'crib',name:'신생아 침대',cat:'sleep',
-   steady:{name:'스토케 슬리피 베이비베드',brand:'Stokke',price:389000,review:'★4.8 (맘카페 압도적 1위)',tip:'성장에 따라 확장 가능'},
-   value:{name:'쁘띠엘린 신생아 침대',brand:'쁘띠엘린',price:89000,review:'★4.5 (가성비 베스트)',tip:'조립 30분, 충분한 품질'}},
+   compare:{s:[{icon:'🛏️',key:'편의성'},{icon:'📐',key:'확장성'},{icon:'🔒',key:'안전성'},{icon:'💰',key:'가성비'}],v:[{icon:'💰',key:'가성비'},{icon:'🛏️',key:'편의성'},{icon:'📐',key:'크기'},{icon:'🔧',key:'조립'}]},
+   steady:[{name:'스토케 슬리피 베이비베드',brand:'Stokke',price:389000,pts:['성장에 따라 확장 가능','노르웨이 안전 인증','맘카페 10년 스테디 1위'],url:''},{name:'리틀 랍스터 신생아 침대',brand:'리틀랍스터',price:249000,pts:['국내 안전 KC인증','사이드 레일 조절 가능','매트리스 포함'],url:''},{name:'페도라 코코네스트 침대',brand:'페도라',price:189000,pts:['6단 높이 조절','메쉬 통기성 사이드','환경 친화 소재'],url:''}],
+   value:[{name:'쁘띠엘린 신생아 침대',brand:'쁘띠엘린',price:89000,pts:['조립 30분','국내 안전 KC인증','가성비 1위'],url:''},{name:'아이베이비 접이식 침대',brand:'아이베이비',price:69000,pts:['접이식 수납 편리','여행용으로도 사용 가능','가벼운 무게'],url:''},{name:'베이비파인 다용도 침대',brand:'베이비파인',price:59000,pts:['가격 대비 견고함','사이드 커버 포함','청소 쉬운 소재'],url:''}]},
   {id:'sleepsuit',name:'수면조끼',cat:'sleep',
-   steady:{name:'에르고 포치 수면조끼',brand:'Ergobaby',price:79000,review:'★4.9 (수면 전문가 추천)',tip:'사계절 무게감 최적'},
-   value:{name:'고슴도치맘 수면조끼',brand:'고슴도치맘',price:29000,review:'★4.4 (국산 가성비)',tip:'세탁기 세탁 가능'}},
+   compare:{s:[{icon:'🌡️',key:'온도조절'},{icon:'🤱',key:'착용편의'},{icon:'💎',key:'소재'},{icon:'🔄',key:'사계절'}],v:[{icon:'💰',key:'가성비'},{icon:'🌡️',key:'보온성'},{icon:'👶',key:'착용감'},{icon:'🧺',key:'세탁'}]},
+   steady:[{name:'에르고 포치 수면조끼',brand:'Ergobaby',price:79000,pts:['사계절 무게감 최적','신생아~24M','소아과 추천 소재'],url:''},{name:'에이든앤아네 드림백',brand:'Aden+Anais',price:69000,pts:['머슬린 100% 소재','통기성 최상급','미국 수면 전문가 추천'],url:''},{name:'러브투드림 스와들업',brand:'Love To Dream',price:65000,pts:['팔 위로 올리는 자세','모로반사 억제 효과','지퍼 개폐 편리'],url:''}],
+   value:[{name:'고슴도치맘 수면조끼',brand:'고슴도치맘',price:29000,pts:['세탁기 세탁 가능','국산 가성비 1위','신생아~12M'],url:''},{name:'베이비리스트 수면주머니',brand:'베이비리스트',price:24000,pts:['양면 사용 가능','지퍼 두 방향','순면 소재'],url:''},{name:'알로앤루 수면조끼',brand:'알로앤루',price:19000,pts:['무형광 GOTS 인증','가장 저렴한 인증 제품','국내 생산'],url:''}]},
   {id:'nursing_pillow',name:'수유쿠션',cat:'feeding',
-   steady:{name:'마이 브레스트프렌드',brand:'My Brest Friend',price:79000,review:'★4.8 (수유 자세 교정)',tip:'허리 부담 70% 감소'},
-   value:{name:'아가주마 수유쿠션',brand:'아가주마',price:24000,review:'★4.3 (가성비 1위)',tip:'커버 탈착 세탁 가능'}},
+   compare:{s:[{icon:'🪑',key:'허리지지'},{icon:'👶',key:'신생아적합'},{icon:'💎',key:'소재'},{icon:'🔧',key:'조절'}],v:[{icon:'💰',key:'가성비'},{icon:'🪑',key:'편의성'},{icon:'🧺',key:'세탁'},{icon:'📦',key:'부피'}]},
+   steady:[{name:'마이 브레스트프렌드',brand:'My Brest Friend',price:79000,pts:['허리 부담 70% 감소','소아과 의사 추천','허리 고정 벨트 포함'],url:''},{name:'바비에 수유쿠션 프리미엄',brand:'바비에',price:65000,pts:['기억폼 소재','커버 세탁 가능','C자형 지지'],url:''},{name:'콤비 수유쿠션',brand:'Combi',price:59000,pts:['일본 수유 전문 브랜드','엄마 체형 맞춤 설계','신생아 인서트 포함'],url:''}],
+   value:[{name:'아가주마 수유쿠션',brand:'아가주마',price:24000,pts:['커버 탈착 세탁 가능','가성비 1위','기본 기능 충실'],url:''},{name:'보니베이비 수유쿠션',brand:'보니베이비',price:19000,pts:['U자형 디자인','가벼운 무게','색상 다양'],url:''},{name:'마더스코너 수유쿠션',brand:'마더스코너',price:16000,pts:['가장 저렴','커버 면 소재','입문용으로 적합'],url:''}]},
   {id:'pump',name:'전동 유축기',cat:'feeding',conditional:'breastfeed',
-   steady:{name:'메델라 스윙 맥시',brand:'Medela',price:349000,review:'★4.9 (산부인과 병원 공급)',tip:'싱글/더블 전환 가능'},
-   value:{name:'스펙트라 S1플러스',brand:'스펙트라',price:149000,review:'★4.7 (국내맘 가성비 1위)',tip:'조용하고 흡인력 우수'}},
+   compare:{s:[{icon:'💪',key:'흡인력'},{icon:'🔇',key:'소음'},{icon:'🔋',key:'배터리'},{icon:'⚙️',key:'기능'}],v:[{icon:'💰',key:'가성비'},{icon:'💪',key:'흡인력'},{icon:'🔇',key:'소음'},{icon:'📱',key:'편의성'}]},
+   steady:[{name:'메델라 스윙 맥시',brand:'Medela',price:349000,pts:['산부인과 병원 공급 제품','싱글/더블 전환 가능','2페이즈 기술'],url:''},{name:'스펙트라 S1 플러스',brand:'스펙트라',price:149000,pts:['조용한 소음','충전식 배터리','국내맘 2위'],url:''},{name:'필립스 아벤트 더블 유축기',brand:'Philips Avent',price:289000,pts:['자연스러운 흡유 기능','스마트폰 앱 연동','백화점 스테디'],url:''}],
+   value:[{name:'베이비몬 무선 유축기',brand:'베이비몬',price:89000,pts:['핸즈프리 가능','배터리 내장','소음 최소화'],url:''},{name:'맘코지 더블 유축기',brand:'맘코지',price:69000,pts:['가성비 가장 우수','더블 동시 유축','세척 부품 최소화'],url:''},{name:'해피맘 무선 유축기',brand:'해피맘',price:55000,pts:['착용형 핸즈프리','초소형 경량','이동 중 사용 가능'],url:''}]},
   {id:'bottle',name:'젖병+젖꼭지',cat:'feeding',
-   steady:{name:'필립스 아벤트 클래식',brand:'Philips Avent',price:49000,review:'★4.8 (소아과 추천)',tip:'모유수유 병행에 최적'},
-   value:{name:'Dr.Brown 스탠다드',brand:'Dr.Brown',price:28000,review:'★4.6 (가스 방지 구조)',tip:'컬럼 분리 세척 필수'}},
+   compare:{s:[{icon:'🤱',key:'모유병행'},{icon:'🧽',key:'세척편의'},{icon:'💧',key:'유량조절'},{icon:'🔒',key:'내구성'}],v:[{icon:'💰',key:'가성비'},{icon:'🤱',key:'모유병행'},{icon:'🧽',key:'세척'},{icon:'📦',key:'구성'}]},
+   steady:[{name:'필립스 아벤트 클래식+',brand:'Philips Avent',price:49000,pts:['모유수유 병행 최적','소아과 추천 1위','AirFree 공기 흡입 방지'],url:''},{name:'닥터브라운 스탠다드',brand:'Dr.Brown',price:38000,pts:['가스 방지 구조','배앓이 예방 효과','내부 통기 시스템'],url:''},{name:'치코 네추럴필링',brand:'Chicco',price:42000,pts:['이탈리아 소아과 추천','젖꼭지 자연감','2단계 유량'],url:''}],
+   value:[{name:'피전 모유실감 젖병',brand:'Pigeon',price:28000,pts:['모유 실감 젖꼭지','가성비 대표 제품','일본 50년 브랜드'],url:''},{name:'누크 네이처센스',brand:'NUK',price:24000,pts:['치아 발달 고려 설계','독일 소아과 인증','세트 구성 우수'],url:''},{name:'코멕스 유리젖병',brand:'코멕스',price:18000,pts:['유리 소재 안전','환경호르몬 제로','세척 간편'],url:''}]},
   {id:'formula_pot',name:'분유포트',cat:'feeding',
-   steady:{name:'보온 분유포트 체리',brand:'체리',price:89000,review:'★4.7 (새벽 수유 필수템)',tip:'정온 유지 8시간'},
-   value:{name:'락앤락 분유포트',brand:'락앤락',price:39000,review:'★4.3 (실용적)',tip:'일반 전기포트로 대체 가능'}},
+   compare:{s:[{icon:'🌡️',key:'정온유지'},{icon:'⏱️',key:'보온시간'},{icon:'📱',key:'편의기능'},{icon:'🔒',key:'안전성'}],v:[{icon:'💰',key:'가성비'},{icon:'🌡️',key:'온도조절'},{icon:'⏱️',key:'속도'},{icon:'🧽',key:'세척'}]},
+   steady:[{name:'보온 분유포트 체리',brand:'체리',price:89000,pts:['정온 유지 8시간','원터치 급냉/급온','맘카페 1위'],url:''},{name:'필립스 아벤트 분유포트',brand:'Philips Avent',price:79000,pts:['3분 이내 적정온도','자동 온도 유지','BPA 프리'],url:''},{name:'토미티피 퍼펙트 프렙',brand:'Tommee Tippee',price:129000,pts:['분유 온도 자동 계산','영국 육아 필수템','물 정제 기능'],url:''}],
+   value:[{name:'락앤락 분유포트',brand:'락앤락',price:39000,pts:['일반 전기포트로 대체 가능','보온 기능 기본','가성비 1위'],url:''},{name:'리빙케어 보온포트',brand:'리빙케어',price:29000,pts:['보온병 겸용','스텐 소재','국내 생산'],url:''},{name:'테팔 퀵&이지',brand:'Tefal',price:24000,pts:['빠른 가열 속도','가장 저렴한 옵션','세척 쉬움'],url:''}]},
   {id:'sterilizer',name:'젖병 스팀 소독기',cat:'feeding',
-   steady:{name:'필립스 아벤트 스팀소독기',brand:'Philips Avent',price:129000,review:'★4.8 (6분 완전 소독)',tip:'건조까지 자동'},
-   value:{name:'크린소독기 3in1',brand:'크린',price:59000,review:'★4.4 (가성비)',tip:'전자레인지 소독백으로 대체 가능'}},
+   compare:{s:[{icon:'⏱️',key:'소독시간'},{icon:'💨',key:'건조기능'},{icon:'📦',key:'용량'},{icon:'🔒',key:'살균력'}],v:[{icon:'💰',key:'가성비'},{icon:'⏱️',key:'소독시간'},{icon:'📦',key:'용량'},{icon:'🧽',key:'관리'}]},
+   steady:[{name:'필립스 아벤트 스팀소독기',brand:'Philips Avent',price:129000,pts:['6분 완전 소독','건조까지 자동','6개 젖병 동시'],url:''},{name:'크린베이비 스팀소독건조기',brand:'크린베이비',price:99000,pts:['UV 살균 추가','건조 기능 우수','넓은 용량'],url:''},{name:'에디슨 스팀소독기',brand:'에디슨',price:89000,pts:['한국 KC 인증','빠른 소독 8분','직관적 조작'],url:''}],
+   value:[{name:'크린소독기 3in1',brand:'크린',price:59000,pts:['기본 살균 충실','가성비 1위','세트 구성'],url:''},{name:'마더케어 전자레인지 소독기',brand:'마더케어',price:29000,pts:['전자레인지 사용','5분 소독 완료','세트 구성'],url:''},{name:'메디컬스팀 기본형',brand:'메디컬스팀',price:39000,pts:['4개 젖병 동시','소형 콤팩트','보관 편리'],url:''}]},
   {id:'breast_pad',name:'모유 패드',cat:'feeding',conditional:'breastfeed',
-   steady:{name:'란시노 세탁가능 모유패드',brand:'Lansinoh',price:39000,review:'★4.9 (흡수력 최강)',tip:'10회 세탁 후에도 유지'},
-   value:{name:'맘편한 일회용 모유패드',brand:'맘편한',price:14000,review:'★4.2 (30매)',tip:'출산 초기에는 일회용 편리'}},
+   compare:{s:[{icon:'💧',key:'흡수력'},{icon:'🌬️',key:'통기성'},{icon:'♻️',key:'재사용'},{icon:'👙',key:'밀착감'}],v:[{icon:'💰',key:'가성비'},{icon:'💧',key:'흡수력'},{icon:'📦',key:'매수'},{icon:'🌬️',key:'통기성'}]},
+   steady:[{name:'란시노 세탁가능 모유패드',brand:'Lansinoh',price:39000,pts:['10회 세탁 후에도 유지','흡수력 최강','세탁기 세탁 가능'],url:''},{name:'메델라 세탁형 모유패드',brand:'Medela',price:34000,pts:['실리콘 코어 흡수','브라 밀착 디자인','100회 세탁 가능'],url:''},{name:'필립스 아벤트 세탁형',brand:'Philips Avent',price:29000,pts:['초박형 디자인','노출 없는 두께','6장 구성'],url:''}],
+   value:[{name:'맘편한 일회용 모유패드',brand:'맘편한',price:14000,pts:['출산 초기 일회용 편리','30매 구성','무향 무형광'],url:''},{name:'보솜이 일회용 패드',brand:'보솜이',price:12000,pts:['50매 대용량','가성비 1위','개별 포장'],url:''},{name:'그린핑거 모유패드',brand:'그린핑거',price:11000,pts:['순면 소재','자극 최소화','30매'],url:''}]},
   {id:'formula',name:'분유',cat:'feeding',
-   steady:{name:'압타밀 프로푸투라',brand:'Aptamil',price:89000,review:'★4.8 (유럽 직구 인기)',tip:'장내 유익균 프리바이오틱스'},
-   value:{name:'남양 임페리얼드림 XO',brand:'남양',price:52000,review:'★4.6 (국산 믿음)',tip:'소화 잘 되는 국산 분유'}},
+   compare:{s:[{icon:'🧬',key:'성분'},{icon:'🍼',key:'소화흡수'},{icon:'🌿',key:'유기농'},{icon:'⭐',key:'맛'}],v:[{icon:'💰',key:'가성비'},{icon:'🧬',key:'성분'},{icon:'🍼',key:'소화흡수'},{icon:'📦',key:'용량'}]},
+   steady:[{name:'압타밀 프로푸투라',brand:'Aptamil',price:89000,pts:['유럽 직구 인기 1위','장내 유익균 프리바이오틱스','엄마 모유 성분 연구'],url:''},{name:'HiPP 유기농 분유',brand:'HiPP',price:79000,pts:['유럽 유기농 인증','항생제 무첨가','독일 소아과 추천'],url:''},{name:'호레 유기농 분유',brand:'Holle',price:85000,pts:['바이오다이나믹 농장','가장 깨끗한 성분','스위스 품질'],url:''}],
+   value:[{name:'남양 임페리얼드림 XO',brand:'남양',price:52000,pts:['소화 잘 되는 국산 분유','모유 성분 연구','가성비 1위'],url:''},{name:'매일 앱솔루트 명작',brand:'매일',price:48000,pts:['국내 1위 분유 브랜드','DHA 강화','구하기 쉬움'],url:''},{name:'일동 후디스 산양분유',brand:'일동',price:55000,pts:['산양유 소화 흡수 우수','단백질 구조 모유와 유사','알레르기 감소'],url:''}]},
   {id:'bottle_brush',name:'젖병 세척 브러시',cat:'feeding',
-   steady:{name:'OXO Tot 젖병솔 세트',brand:'OXO Tot',price:35000,review:'★4.8 (인체공학 그립)',tip:'구석구석 세척 가능'},
-   value:{name:'이엔지이 젖병솔 세트',brand:'이엔지이',price:12000,review:'★4.3 (가성비 정석)',tip:'기본 기능 충분'}},
+   compare:{s:[{icon:'🔧',key:'세척력'},{icon:'✋',key:'그립감'},{icon:'📦',key:'구성'},{icon:'💎',key:'내구성'}],v:[{icon:'💰',key:'가성비'},{icon:'🔧',key:'세척력'},{icon:'📦',key:'구성'},{icon:'🧽',key:'관리'}]},
+   steady:[{name:'OXO Tot 젖병솔 세트',brand:'OXO Tot',price:35000,pts:['인체공학 그립','구석구석 세척 가능','스탠드 포함'],url:''},{name:'칼슨 젖병솔 프리미엄',brand:'칼슨',price:28000,pts:['나일론 소재 내구성','360도 회전 브러시','4종 세트'],url:''},{name:'마더스코너 실리콘솔',brand:'마더스코너',price:25000,pts:['실리콘 소재 안전','스크래치 없는 세척','세균 번식 억제'],url:''}],
+   value:[{name:'이엔지이 젖병솔 세트',brand:'이엔지이',price:12000,pts:['기본 기능 충분','5종 구성','가성비 1위'],url:''},{name:'피죤 젖병세척솔',brand:'Pigeon',price:9000,pts:['일본 브랜드 가성비','소형 젖꼭지솔 포함','내구성 우수'],url:''},{name:'그린핑거 세척솔 세트',brand:'그린핑거',price:8000,pts:['가장 저렴','기본 2종 구성','초보 엄마 입문용'],url:''}]},
   {id:'diaper',name:'신생아 기저귀',cat:'diaper',
-   steady:{name:'하기스 보송보송케어 NB',brand:'Hạgies',price:49000,review:'★4.9 (피부과 추천)',tip:'100매 기준'},
-   value:{name:'그린핑거 신생아기저귀',brand:'그린핑거',price:32000,review:'★4.5 (100% 순면 커버)',tip:'100매 기준'}},
+   compare:{s:[{icon:'🌬️',key:'통기성'},{icon:'🧴',key:'피부자극'},{icon:'💧',key:'흡수력'},{icon:'📦',key:'용량'}],v:[{icon:'💰',key:'가성비'},{icon:'🌬️',key:'통기성'},{icon:'🧴',key:'피부자극'},{icon:'📦',key:'용량'}]},
+   steady:[{name:'하기스 보송보송케어 NB',brand:'Hạgies',price:49000,pts:['피부과 추천 무형광·무향','통기성 최상 땀띠 예방','맘카페 10년 연속 1위'],url:''},{name:'팸퍼스 프리미엄케어 NB',brand:'Pampers',price:52000,pts:['흡수력·피부자극 최상','밤새 새지 않는 구조','유럽 글로벌 스테디'],url:''},{name:'마미포코 팬티기저귀 NB',brand:'MamyPoko',price:38000,pts:['스테디 중 매수 최다 108매','허리밴드 신축성 우수','3개월 이후 활동기 강점'],url:''}],
+   value:[{name:'그린핑거 신생아 기저귀',brand:'그린핑거',price:29000,pts:['100% 순면 커버 자극 최소','아토피 피부도 사용 가능','하기스 대비 41% 저렴'],url:''},{name:'보솜이 신생아 기저귀',brand:'보솜이',price:26000,pts:['국내 생산 품질 관리 우수','피부 자극 테스트 완료','대형마트 가성비 스테디'],url:''},{name:'마이비 신생아 기저귀',brand:'마이비',price:24000,pts:['가성비템 중 매수 최다 110매','쿠팡 자체브랜드 로켓배송','정기구독 시 추가 15% 할인'],url:''}]},
   {id:'changing_mat',name:'기저귀 교환대',cat:'diaper',
-   steady:{name:'스토케 케어 기저귀 교환대',brand:'Stokke',price:199000,review:'★4.7 (허리 안 구부림)',tip:'욕조 겸용 모델도 있음'},
-   value:{name:'피셔프라이스 접이식 교환대',brand:'Fisher-Price',price:58000,review:'★4.4 (접이식 편리)',tip:'매트 방수 처리'}},
+   compare:{s:[{icon:'📏',key:'높이조절'},{icon:'🔒',key:'안전성'},{icon:'🛁',key:'욕조겸용'},{icon:'💎',key:'내구성'}],v:[{icon:'💰',key:'가성비'},{icon:'🔄',key:'접이식'},{icon:'🧽',key:'세척'},{icon:'📏',key:'크기'}]},
+   steady:[{name:'스토케 케어 교환대',brand:'Stokke',price:199000,pts:['허리 안 구부리는 높이','욕조 겸용 모델 있음','10년 스테디 1위'],url:''},{name:'칸가루 교환대 프리미엄',brand:'칸가루',price:149000,pts:['높이 6단 조절','안전벨트 포함','방수 패드 교체 가능'],url:''},{name:'치코 교환대',brand:'Chicco',price:129000,pts:['이탈리아 소아과 추천','접이식 수납 가능','커버 세탁 가능'],url:''}],
+   value:[{name:'피셔프라이스 접이식 교환대',brand:'Fisher-Price',price:58000,pts:['접이식 편리 수납','방수 매트 처리','가성비 1위'],url:''},{name:'베이비팜 교환대',brand:'베이비팜',price:39000,pts:['경량 이동 가능','기본 안전벨트 포함','국산 소재'],url:''},{name:'마더케어 교환매트',brand:'마더케어',price:19000,pts:['어느 곳에서나 사용','방수 소재 쉬운 세척','가장 저렴'],url:''}]},
   {id:'wipes',name:'물티슈',cat:'diaper',
-   steady:{name:'하기스 물티슈 네이처메이드',brand:'Hạgies',price:29000,review:'★4.8 (무형광 무향)',tip:'캡형 80매 x3팩'},
-   value:{name:'그린핑거 물티슈',brand:'그린핑거',price:18000,review:'★4.5 (가성비 1위)',tip:'80매 x3팩'}},
+   compare:{s:[{icon:'🌿',key:'무형광'},{icon:'🧴',key:'저자극'},{icon:'💧',key:'수분량'},{icon:'📦',key:'용량'}],v:[{icon:'💰',key:'가성비'},{icon:'🌿',key:'무형광'},{icon:'💧',key:'수분량'},{icon:'📦',key:'용량'}]},
+   steady:[{name:'하기스 네이처메이드',brand:'Hạgies',price:29000,pts:['무형광 무향 인증','수분 가장 풍부','80매x3팩'],url:''},{name:'그린핑거 순수 물티슈',brand:'그린핑거',price:25000,pts:['99% 정제수','순면 시트','무알코올 무파라벤'],url:''},{name:'베베숲 물티슈',brand:'베베숲',price:28000,pts:['피부 전문가 추천','알로에 성분 함유','60매x4팩'],url:''}],
+   value:[{name:'마마앤베이비 물티슈',brand:'마마앤베이비',price:15000,pts:['가성비 압도적 1위','80매x6팩 대용량','무향 무알코올'],url:''},{name:'베이비워시 물티슈',brand:'베이비워시',price:12000,pts:['100매 대용량','무형광 인증','최저가 무형광'],url:''},{name:'코코넛 물티슈',brand:'코코넛',price:11000,pts:['코코넛 워터 성분','자연 유래 원료','친환경 포장'],url:''}]},
   {id:'wipes_warmer',name:'물티슈 워머',cat:'diaper',conditional:'winter',
-   steady:{name:'필립스 아벤트 물티슈워머',brand:'Philips Avent',price:69000,review:'★4.7 (온도 조절)',tip:'새벽 기저귀 교환 필수'},
-   value:{name:'베이비베스트 물티슈워머',brand:'베이비베스트',price:29000,review:'★4.3 (기본에 충실)',tip:'겨울 출산 아니면 생략 가능'}},
+   compare:{s:[{icon:'🌡️',key:'온도조절'},{icon:'⏱️',key:'예열속도'},{icon:'💧',key:'건조방지'},{icon:'📦',key:'용량'}],v:[{icon:'💰',key:'가성비'},{icon:'🌡️',key:'온도유지'},{icon:'⏱️',key:'예열'},{icon:'🔌',key:'전력'}]},
+   steady:[{name:'필립스 아벤트 물티슈워머',brand:'Philips Avent',price:69000,pts:['온도 2단계 조절','건조 방지 습도 유지','새벽 기저귀 교환 필수'],url:''},{name:'프린스라이언 워머',brand:'Prince Lion Heart',price:55000,pts:['미국 1위 물티슈 워머','LED 야간 조명 포함','균일한 온도 유지'],url:''},{name:'해피베이비 온열기',brand:'해피베이비',price:49000,pts:['국산 브랜드','3단 온도 조절','대용량 80매 입장'],url:''}],
+   value:[{name:'베이비베스트 물티슈워머',brand:'베이비베스트',price:29000,pts:['기본에 충실','가성비 1위','겨울 필수템'],url:''},{name:'리틀타잔 워머',brand:'리틀타잔',price:22000,pts:['콤팩트 소형','전력 소비 최소','여행용 가능'],url:''},{name:'아이베이비 온열파우치',brand:'아이베이비',price:18000,pts:['가장 저렴','USB 충전식','이동 시 휴대 가능'],url:''}]},
   {id:'stroller',name:'유모차',cat:'outing',conditional:'outing_active',
-   steady:{name:'부가부 Fox 5',brand:'Bugaboo',price:1290000,review:'★4.9 (이동 흡수 최강)',tip:'신생아부터 22kg까지'},
-   value:{name:'콜코롤로 픽스 유모차',brand:'콜코롤로',price:289000,review:'★4.6 (가성비 베스트)',tip:'절충형 유모차 인기 1위'}},
+   compare:{s:[{icon:'🛞',key:'승차감'},{icon:'⚖️',key:'무게'},{icon:'📐',key:'접이식'},{icon:'🔒',key:'안전성'}],v:[{icon:'💰',key:'가성비'},{icon:'🛞',key:'승차감'},{icon:'⚖️',key:'무게'},{icon:'🔄',key:'편의성'}]},
+   steady:[{name:'부가부 Fox 5',brand:'Bugaboo',price:1290000,pts:['이동 흡수 최강','신생아부터 22kg','글로벌 1위 프리미엄'],url:''},{name:'사이베스 프로 2',brand:'Cybex',price:890000,pts:['독일 안전 5성 인증','마그네슘 프레임 경량','원핸드 접이'],url:''},{name:'영 YOYO',brand:'Yoyo',price:690000,pts:['2.5kg 초경량','비행기 기내 반입 가능','도심 이동 최적'],url:''}],
+   value:[{name:'콜코롤로 픽스',brand:'콜코롤로',price:289000,pts:['절충형 가성비 1위','전후 방향 전환','리클라이닝 가능'],url:''},{name:'페도라 유모차',brand:'페도라',price:249000,pts:['국산 가성비 대표','풀리클라이닝 가능','대용량 바구니'],url:''},{name:'그라코 트레블 유모차',brand:'Graco',price:189000,pts:['원핸드 접이식','미국 브랜드 가성비','가장 저렴한 절충형'],url:''}]},
   {id:'carrier',name:'신생아 아기띠',cat:'outing',
-   steady:{name:'에르고베이비 옴니 360',brand:'Ergobaby',price:239000,review:'★4.9 (정형외과 추천)',tip:'신생아 인서트 포함'},
-   value:{name:'코니 바디핏 아기띠',brand:'코니',price:79000,review:'★4.7 (국산 인기 1위)',tip:'슬림핏 디자인 인기'}},
+   compare:{s:[{icon:'🦴',key:'허리지지'},{icon:'👶',key:'신생아적합'},{icon:'🌡️',key:'통기성'},{icon:'🔒',key:'안전성'}],v:[{icon:'💰',key:'가성비'},{icon:'🦴',key:'허리지지'},{icon:'👶',key:'착용편의'},{icon:'🌡️',key:'통기성'}]},
+   steady:[{name:'에르고베이비 옴니 360',brand:'Ergobaby',price:239000,pts:['정형외과 추천','신생아 인서트 포함','4가지 착용 포지션'],url:''},{name:'베코 젬니 4in1',brand:'Beco',price:189000,pts:['신생아~20kg','메쉬 통기성 최상','힙시트 겸용'],url:''},{name:'밀라미 힙시트 아기띠',brand:'밀라미',price:159000,pts:['힙시트 포함','허리 부담 60% 감소','국내 인기 1위'],url:''}],
+   value:[{name:'코니 바디핏 아기띠',brand:'코니',price:79000,pts:['슬림핏 디자인 인기','국산 가성비 1위','초경량 180g'],url:''},{name:'아이엔젤 힙시트캐리어',brand:'아이엔젤',price:69000,pts:['힙시트 포함 가성비','허리 지지 충분','국내 생산'],url:''},{name:'베이비뵨 미니',brand:'BabyBjörn',price:59000,pts:['북유럽 브랜드 입문형','신생아 적합','설치 쉬움'],url:''}]},
   {id:'carseat',name:'카시트',cat:'outing',conditional:'car',
-   steady:{name:'맥시코시 펄 360 프로',brand:'Maxi-Cosi',price:589000,review:'★4.9 (유럽 안전 5성)',tip:'360도 회전 편리'},
-   value:{name:'다이치 퍼스트세븐 카시트',brand:'다이치',price:249000,review:'★4.7 (국산 안전 1위)',tip:'신생아~7세 장기 사용'}},
+   compare:{s:[{icon:'🔒',key:'안전성'},{icon:'🔄',key:'회전기능'},{icon:'📏',key:'사용기간'},{icon:'🛞',key:'충격흡수'}],v:[{icon:'💰',key:'가성비'},{icon:'🔒',key:'안전성'},{icon:'📏',key:'사용기간'},{icon:'🔄',key:'편의성'}]},
+   steady:[{name:'맥시코시 펄 360 프로',brand:'Maxi-Cosi',price:589000,pts:['360도 회전 편리','유럽 안전 5성 인증','신생아~4세'],url:''},{name:'사이베스 아토나 360',brand:'Cybex',price:690000,pts:['독일 안전 최고등급','측면 충격 보호','신생아~18kg'],url:''},{name:'조이 트리거',brand:'Joie',price:389000,pts:['영국 안전 최고등급','이소픽스 간편 설치','긴 사용기간'],url:''}],
+   value:[{name:'다이치 퍼스트세븐',brand:'다이치',price:249000,pts:['국산 안전 1위','신생아~7세 장기 사용','가성비 압도적'],url:''},{name:'에어백미 360 카시트',brand:'에어백미',price:199000,pts:['에어백 내장','국내 유일 에어백 가성비','설치 간편'],url:''},{name:'그라코 슬림핏 카시트',brand:'Graco',price:169000,pts:['미국 브랜드 입문형','가장 저렴한 안전인증','좁은 차량 적합'],url:''}]},
   {id:'bathtub',name:'아기 욕조',cat:'bath',
-   steady:{name:'스토케 플렉시배스',brand:'Stokke',price:89000,review:'★4.8 (접이식 유일)',tip:'신생아 해먹 포함'},
-   value:{name:'메디바스 유아욕조',brand:'메디바스',price:35000,review:'★4.4 (가성비 정석)',tip:'온도계 내장 모델 추천'}},
+   compare:{s:[{icon:'🔄',key:'접이식'},{icon:'🌡️',key:'온도계'},{icon:'👶',key:'신생아적합'},{icon:'📏',key:'크기'}],v:[{icon:'💰',key:'가성비'},{icon:'🌡️',key:'온도계'},{icon:'👶',key:'편의성'},{icon:'🧽',key:'세척'}]},
+   steady:[{name:'스토케 플렉시배스',brand:'Stokke',price:89000,pts:['접이식 유일','신생아 해먹 포함','성장에 따라 변형'],url:''},{name:'팝비 욕조',brand:'Popbe',price:69000,pts:['온도 감지 색변화','비스듬한 각도 안전','탈착식 지지대'],url:''},{name:'써밋 신생아 욕조',brand:'써밋',price:55000,pts:['내장 온도계','미끄럼 방지 패드','신생아 지지대 포함'],url:''}],
+   value:[{name:'메디바스 유아욕조',brand:'메디바스',price:35000,pts:['온도계 내장','가성비 정석','배수 마개 편리'],url:''},{name:'리틀클라우드 욕조',brand:'리틀클라우드',price:25000,pts:['접이식 경량','여행용 가능','공간 절약'],url:''},{name:'베이직 신생아 욕조',brand:'베이직',price:15000,pts:['가장 저렴','기본 기능 충실','신생아 해먹 별매'],url:''}]},
   {id:'lotion',name:'아기 로션+샴푸',cat:'bath',
-   steady:{name:'무스텔라 멀티마이온+젠틀샴푸',brand:'Mustela',price:79000,review:'★4.9 (피부과 의사 추천)',tip:'아토피 예방에 효과적'},
-   value:{name:'유한킴벌리 하기스 로션세트',brand:'하기스',price:29000,review:'★4.4 (국산 저자극)',tip:'대용량 가성비 우수'}},
+   compare:{s:[{icon:'🌿',key:'저자극'},{icon:'🧴',key:'보습력'},{icon:'🔬',key:'아토피예방'},{icon:'🌸',key:'향'}],v:[{icon:'💰',key:'가성비'},{icon:'🌿',key:'저자극'},{icon:'🧴',key:'보습력'},{icon:'📦',key:'용량'}]},
+   steady:[{name:'무스텔라 멀티마이온+젠틀샴푸',brand:'Mustela',price:79000,pts:['피부과 의사 추천','아토피 예방 효과','프랑스 85년 브랜드'],url:''},{name:'세타필 베이비 로션세트',brand:'Cetaphil',price:65000,pts:['피부과 추천 1위','무향 무색소','민감성 피부 전문'],url:''},{name:'아토팜 베이비 세트',brand:'아토팜',price:58000,pts:['국내 아토피 전문','MLE 복합체 성분','피부장벽 강화'],url:''}],
+   value:[{name:'하기스 로션+샴푸 세트',brand:'하기스',price:29000,pts:['국산 저자극','대용량 가성비 우수','무파라벤 무향'],url:''},{name:'그린핑거 베이비 세트',brand:'그린핑거',price:24000,pts:['식물성 성분','가성비 1위','무자극 인증'],url:''},{name:'존슨즈 베이비 클래식',brand:'Johnsons',price:19000,pts:['글로벌 스테디 가성비','50년 브랜드 안전성','가장 저렴'],url:''}]},
   {id:'thermometer',name:'비접촉 체온계',cat:'bath',
-   steady:{name:'브라운 써모스캔 7',brand:'Braun',price:129000,review:'★4.9 (소아과 동일 제품)',tip:'1초 측정 오차 ±0.2℃'},
-   value:{name:'이글턴 비접촉체온계',brand:'이글턴',price:35000,review:'★4.5 (가성비 1위)',tip:'국내 의료기기 인증'}},
+   compare:{s:[{icon:'⚡',key:'측정속도'},{icon:'🎯',key:'정확도'},{icon:'📱',key:'앱연동'},{icon:'🔊',key:'음성안내'}],v:[{icon:'💰',key:'가성비'},{icon:'⚡',key:'측정속도'},{icon:'🎯',key:'정확도'},{icon:'🔋',key:'배터리'}]},
+   steady:[{name:'브라운 써모스캔 7',brand:'Braun',price:129000,pts:['소아과 동일 제품','1초 측정 오차 ±0.2℃','PreWarming 기능'],url:''},{name:'오므론 귀 체온계',brand:'Omron',price:89000,pts:['의료기기 정확도','1초 측정','귀적외선 방식'],url:''},{name:'지브로 비접촉 체온계',brand:'Gvda',price:69000,pts:['이마·귀 겸용','메모리 32개','LED 디스플레이'],url:''}],
+   value:[{name:'이글턴 비접촉체온계',brand:'이글턴',price:35000,pts:['국내 의료기기 인증','가성비 1위','이마 측정 1초'],url:''},{name:'체크미 스마트 체온계',brand:'체크미',price:28000,pts:['블루투스 연동','스마트폰 기록','가격 대비 기능 우수'],url:''},{name:'비스토 비접촉체온계',brand:'비스토',price:19000,pts:['가장 저렴한 인증제품','기본 측정 충실','전원 자동 꺼짐'],url:''}]},
   {id:'nail_kit',name:'손발톱 손질 키트',cat:'bath',
-   steady:{name:'프리다베이비 네일프리다',brand:'Fridababy',price:39000,review:'★4.8 (미국 소아과 추천)',tip:'파일+클리퍼 세트'},
-   value:{name:'아가잠 네일케어세트',brand:'아가잠',price:12000,review:'★4.3 (가성비 기본)',tip:'작은 손에 맞는 크기'}},
+   compare:{s:[{icon:'🎯',key:'정밀도'},{icon:'🔒',key:'안전성'},{icon:'📦',key:'구성'},{icon:'👶',key:'사용편의'}],v:[{icon:'💰',key:'가성비'},{icon:'🎯',key:'정밀도'},{icon:'📦',key:'구성'},{icon:'🔒',key:'안전성'}]},
+   steady:[{name:'프리다베이비 네일프리다',brand:'Fridababy',price:39000,pts:['미국 소아과 추천','파일+클리퍼 세트','안전 가드 내장'],url:''},{name:'피죤 신생아 네일세트',brand:'Pigeon',price:29000,pts:['일본 소아과 추천','초소형 정밀 클리퍼','가위+파일+클리퍼 3종'],url:''},{name:'치코 베이비 네일세트',brand:'Chicco',price:25000,pts:['이탈리아 소아과 추천','안전 엔드스톱','세척 쉬운 소재'],url:''}],
+   value:[{name:'아가잠 네일케어세트',brand:'아가잠',price:12000,pts:['작은 손에 맞는 크기','가성비 1위','4종 구성'],url:''},{name:'베이비세이프 네일키트',brand:'베이비세이프',price:9000,pts:['가장 저렴','기본 3종 구성','KC 안전인증'],url:''},{name:'리틀닥터 손발톱 세트',brand:'리틀닥터',price:8000,pts:['의료용 소재','소독 가능','미끄럼방지 그립'],url:''}]},
   {id:'playmat',name:'플레이 매트',cat:'play',
-   steady:{name:'알로프롬 논슬립 플레이매트',brand:'Allo From',price:249000,review:'★4.8 (PVC 프리 인증)',tip:'두께 4cm 충격 흡수'},
-   value:{name:'퍼즐 매트 9피스',brand:'쁘띠엘린',price:49000,review:'★4.4 (조합형 편리)',tip:'원하는 크기로 조합'}},
+   compare:{s:[{icon:'🛡️',key:'유해물질'},{icon:'📏',key:'두께'},{icon:'🎨',key:'디자인'},{icon:'🧽',key:'세척'}],v:[{icon:'💰',key:'가성비'},{icon:'📏',key:'두께'},{icon:'🛡️',key:'안전성'},{icon:'🧩',key:'조합'}]},
+   steady:[{name:'알로프롬 논슬립 플레이매트',brand:'Allo From',price:249000,pts:['PVC 프리 인증','두께 4cm 충격 흡수','유해물질 없음'],url:''},{name:'에코플레이 XPE 매트',brand:'에코플레이',price:199000,pts:['XPE 소재 안전','세척기 세탁 가능','접이식 수납'],url:''},{name:'뮤트매트 폴딩 플레이매트',brand:'뮤트',price:179000,pts:['방음 기능','두께 4cm','디자인 심플'],url:''}],
+   value:[{name:'쁘띠엘린 퍼즐 매트 9피스',brand:'쁘띠엘린',price:49000,pts:['원하는 크기 조합','가성비 1위','세척 쉬움'],url:''},{name:'유아이즈 놀이매트',brand:'유아이즈',price:39000,pts:['EVA 소재 저렴','두께 1.5cm 기본','색상 다양'],url:''},{name:'에코베이비 폴딩매트',brand:'에코베이비',price:29000,pts:['접이식 수납','PVC 프리 가성비','가장 저렴한 폴딩'],url:''}]},
   {id:'playgym',name:'플레이짐',cat:'play',
-   steady:{name:'스킵홉 플레이짐',brand:'Skip Hop',price:139000,review:'★4.8 (발달 단계별 장난감)',tip:'10+ 액세서리 포함'},
-   value:{name:'피셔프라이스 플레이짐',brand:'Fisher-Price',price:69000,review:'★4.5 (가성비 클래식)',tip:'4개 위치 조절 가능'}},
+   compare:{s:[{icon:'🧠',key:'발달자극'},{icon:'🎵',key:'소리/음악'},{icon:'📦',key:'구성품'},{icon:'📏',key:'성장단계'}],v:[{icon:'💰',key:'가성비'},{icon:'🧠',key:'발달자극'},{icon:'🎵',key:'소리'},{icon:'🔧',key:'조립'}]},
+   steady:[{name:'스킵홉 플레이짐',brand:'Skip Hop',price:139000,pts:['발달 단계별 장난감','10+ 액세서리 포함','미국 육아 스테디'],url:''},{name:'피셔프라이스 레인포레스트',brand:'Fisher-Price',price:119000,pts:['음악+소리 기능','5가지 놀이 자극','세탁 가능 패드'],url:''},{name:'인판티노 4in1 짐',brand:'Infantino',price:99000,pts:['4가지 사용 모드','트레이 포함','신생아~유아'],url:''}],
+   value:[{name:'피셔프라이스 기본 플레이짐',brand:'Fisher-Price',price:69000,pts:['가성비 클래식','4개 위치 조절','기본 장난감 포함'],url:''},{name:'매매 플레이짐',brand:'매매',price:49000,pts:['국산 가성비 1위','조립 10분','음악 기능 포함'],url:''},{name:'베이직 아기 체육관',brand:'베이직',price:35000,pts:['가장 저렴','기본 3가지 장난감','세탁 가능 매트'],url:''}]},
   {id:'bodysuit',name:'바디슈트+우주복',cat:'clothes',
-   steady:{name:'베베드씨엘 신생아 세트',brand:'베베드씨엘',price:89000,review:'★4.8 (국내 최고급 순면)',tip:'NB~3M 사이즈 세트'},
-   value:{name:'알로앤루 바디슈트 10종',brand:'알로앤루',price:39000,review:'★4.6 (가성비 1위)',tip:'무형광 GOTS 인증 면'}},
+   compare:{s:[{icon:'🌿',key:'소재'},{icon:'🎨',key:'디자인'},{icon:'📦',key:'구성'},{icon:'🔒',key:'안전인증'}],v:[{icon:'💰',key:'가성비'},{icon:'🌿',key:'소재'},{icon:'📦',key:'구성'},{icon:'🔧',key:'편의성'}]},
+   steady:[{name:'베베드씨엘 신생아 세트',brand:'베베드씨엘',price:89000,pts:['국내 최고급 순면','NB~3M 세트 구성','GOTS 유기농 인증'],url:''},{name:'알로앤루 프리미엄 세트',brand:'알로앤루',price:75000,pts:['무형광 GOTS 인증','부드러운 터치','디자인 감각적'],url:''},{name:'모이몰른 신생아 세트',brand:'Moi Mili',price:69000,pts:['북유럽 디자인','유해물질 검사 완료','부드러운 인터락 소재'],url:''}],
+   value:[{name:'알로앤루 바디슈트 10종',brand:'알로앤루',price:39000,pts:['무형광 GOTS 인증 면','가성비 1위','10종 넉넉한 구성'],url:''},{name:'베이비갭 멀티팩',brand:'babyGAP',price:35000,pts:['미국 브랜드 가성비','5종 구성','세탁 내구성 우수'],url:''},{name:'이마트 트레이더스 세트',brand:'자체브랜드',price:25000,pts:['가장 저렴','면 100%','7종 구성'],url:''}]},
   {id:'swaddle',name:'속싸개',cat:'clothes',
-   steady:{name:'에이든앤아네 머슬린 속싸개',brand:'Aden+Anais',price:79000,review:'★4.9 (세계 1위 속싸개)',tip:'4장 세트 모슬린'},
-   value:{name:'이지드로우 속싸개 세트',brand:'이지드로우',price:28000,review:'★4.5 (국산 가성비)',tip:'3장 세트 넉넉한 크기'}},
+   compare:{s:[{icon:'🌬️',key:'통기성'},{icon:'💎',key:'소재'},{icon:'📏',key:'크기'},{icon:'🔄',key:'다용도'}],v:[{icon:'💰',key:'가성비'},{icon:'🌬️',key:'통기성'},{icon:'📦',key:'매수'},{icon:'💎',key:'소재'}]},
+   steady:[{name:'에이든앤아네 머슬린 속싸개',brand:'Aden+Anais',price:79000,pts:['세계 1위 속싸개','4장 세트 모슬린','통기성 최상 땀띠 예방'],url:''},{name:'스왓클링 블랭킷',brand:'Swaddle Blanket',price:59000,pts:['유기농 뱀부 소재','항균 기능','4장 세트'],url:''},{name:'HALO 스왓클 세트',brand:'HALO',price:55000,pts:['미국 소아과 추천','모로반사 억제 설계','4장 구성'],url:''}],
+   value:[{name:'이지드로우 속싸개 세트',brand:'이지드로우',price:28000,pts:['국산 가성비 1위','3장 세트 넉넉한 크기','순면 소재'],url:''},{name:'보니베이비 속싸개',brand:'보니베이비',price:22000,pts:['4장 세트','무형광 인증','가장 넓은 크기'],url:''},{name:'알로앤루 기본 속싸개',brand:'알로앤루',price:18000,pts:['GOTS 인증 가성비','3장 세트','여름용 얇은 소재'],url:''}]},
   {id:'winter_suit',name:'방한 우주복',cat:'clothes',conditional:'winter',
-   steady:{name:'모이몰른 방한 우주복',brand:'Moi Mili',price:129000,review:'★4.8 (북유럽 아웃도어 브랜드)',tip:'-20℃까지 보온 가능'},
-   value:{name:'알로앤루 방한우주복',brand:'알로앤루',price:59000,review:'★4.5 (가성비 방한)',tip:'내부 기모 소재'}}
+   compare:{s:[{icon:'🌡️',key:'보온성'},{icon:'💎',key:'소재'},{icon:'🎨',key:'디자인'},{icon:'📏',key:'사이즈'}],v:[{icon:'💰',key:'가성비'},{icon:'🌡️',key:'보온성'},{icon:'💎',key:'소재'},{icon:'🎨',key:'디자인'}]},
+   steady:[{name:'모이몰른 방한 우주복',brand:'Moi Mili',price:129000,pts:['-20℃까지 보온 가능','북유럽 아웃도어 브랜드','발 끝까지 커버'],url:''},{name:'노르딕 베이비 방한복',brand:'Nordic Baby',price:109000,pts:['덴마크 아웃도어 소재','스키복 수준 보온','OEKO-TEX 인증'],url:''},{name:'베네통 베이비 방한복',brand:'Benetton',price:89000,pts:['이탈리아 패션 브랜드','세련된 디자인','가성비 프리미엄'],url:''}],
+   value:[{name:'알로앤루 방한우주복',brand:'알로앤루',price:59000,pts:['내부 기모 소재','가성비 1위','국내 생산'],url:''},{name:'베이비갭 방한복',brand:'babyGAP',price:49000,pts:['미국 브랜드 가성비','두꺼운 충전재','귀여운 디자인'],url:''},{name:'이마트 기모 우주복',brand:'자체브랜드',price:29000,pts:['가장 저렴','기모 안감 보온','지퍼 개폐 편리'],url:''}]}
 ];
 
-var CATEGORIES = [
-  {id:'all',label:'전체',emoji:'🗂️'},
-  {id:'sleep',label:'수면',emoji:'💤'},
-  {id:'feeding',label:'수유/이유',emoji:'🍼'},
-  {id:'diaper',label:'기저귀',emoji:'🧷'},
-  {id:'outing',label:'외출',emoji:'🚗'},
-  {id:'bath',label:'목욕/건강',emoji:'🛁'},
-  {id:'play',label:'놀이',emoji:'🎮'},
-  {id:'clothes',label:'의류',emoji:'👕'}
+var CATEGORIES=[{id:'all',label:'전체',emoji:'🗂️'},{id:'sleep',label:'수면',emoji:'💤'},{id:'feeding',label:'수유/이유',emoji:'🍼'},{id:'diaper',label:'기저귀',emoji:'🧷'},{id:'outing',label:'외출',emoji:'🚗'},{id:'bath',label:'목욕/건강',emoji:'🛁'},{id:'play',label:'놀이',emoji:'🎮'},{id:'clothes',label:'의류',emoji:'👕'}];
+
+var QUESTIONS=[
+  {id:'feeding_type',label:'수유 방식',options:[{v:'breastfeed',l:'모유 수유 🤱'},{v:'formula',l:'분유 수유 🍼'},{v:'mixed',l:'혼합 수유 💕'}],hint:'유축기·모유패드 포함 여부에 영향'},
+  {id:'season',label:'출산 예정 계절',options:[{v:'spring',l:'봄 🌸'},{v:'summer',l:'여름 ☀️'},{v:'autumn',l:'가을 🍂'},{v:'winter',l:'겨울 ❄️'}],hint:'방한 우주복·물티슈워머 포함 여부에 영향'},
+  {id:'postpartum',label:'산후조리원 이용',options:[{v:'yes',l:'이용 예정 🏥'},{v:'no',l:'집에서 조리 🏠'}],hint:'일부 아이템 필요도 변동'},
+  {id:'house',label:'주거 환경',options:[{v:'apt',l:'아파트/빌라 🏢'},{v:'house',l:'단독주택 🏡'},{v:'small',l:'소형 평수 🤏'}],hint:'공간 필요 아이템에 영향'},
+  {id:'outing',label:'외출 성향',options:[{v:'active',l:'자주 외출 🚶'},{v:'rarely',l:'외출 자제 🏠'},{v:'medium',l:'적당히 외출 🌿'}],hint:'유모차 포함 여부에 영향'},
+  {id:'support',label:'육아 지원',options:[{v:'both',l:'양가 모두 도움 👴👵'},{v:'one',l:'한쪽만 도움 👵'},{v:'none',l:'도움 없음 💪'}],hint:'필요 아이템 우선순위 조정'},
+  {id:'car',label:'자차 보유',options:[{v:'yes',l:'있음 🚙'},{v:'no',l:'없음 🚇'}],hint:'카시트 포함 여부에 영향'},
+  {id:'budget',label:'전체 예산',options:[{v:'300',l:'30만 이하 💸'},{v:'700',l:'70만 이하 💰'},{v:'1500',l:'150만 이하 💳'},{v:'unlimited',l:'제한 없음 ✨'}],hint:'예산 참고용'},
+  {id:'gift',label:'선물 예정 아이템',options:[{v:'stroller',l:'유모차 🍼'},{v:'carseat',l:'카시트 🚗'},{v:'crib',l:'침대 🛏️'},{v:'none',l:'선물 없음'}],hint:'선물 예정 아이템 참고'},
+  {id:'experience',label:'출산 경험',options:[{v:'first',l:'첫째 👶'},{v:'second',l:'둘째 이상 👨‍👩‍👧'}],hint:'보유 아이템 재활용 고려'}
 ];
 
-var QUESTIONS = [
-  {id:'feeding_type',label:'수유 방식',options:[{v:'breastfeed',l:'모유 수유 🤱'},{v:'formula',l:'분유 수유 🍼'},{v:'mixed',l:'혼합 수유 💕'}],
-   hint:'유축기·모유패드 포함 여부에 영향'},
-  {id:'season',label:'출산 예정 계절',options:[{v:'spring',l:'봄 🌸'},{v:'summer',l:'여름 ☀️'},{v:'autumn',l:'가을 🍂'},{v:'winter',l:'겨울 ❄️'}],
-   hint:'방한 우주복·물티슈워머 포함 여부에 영향'},
-  {id:'postpartum',label:'산후조리원 이용',options:[{v:'yes',l:'이용 예정 🏥'},{v:'no',l:'집에서 조리 🏠'}],
-   hint:'일부 아이템 필요도 변동'},
-  {id:'house',label:'주거 환경',options:[{v:'apt',l:'아파트/빌라 🏢'},{v:'house',l:'단독주택 🏡'},{v:'small',l:'소형 평수 🤏'}],
-   hint:'기저귀 교환대 등 공간 필요 아이템에 영향'},
-  {id:'outing',label:'외출 성향',options:[{v:'active',l:'자주 외출 🚶'},{v:'rarely',l:'외출 자제 🏠'},{v:'medium',l:'적당히 외출 🌿'}],
-   hint:'유모차 포함 여부에 영향'},
-  {id:'support',label:'육아 지원',options:[{v:'both',l:'양가 모두 도움 👴👵'},{v:'one',l:'한쪽만 도움 👵'},{v:'none',l:'도움 없음 💪'}],
-   hint:'필요 아이템 우선순위 조정'},
-  {id:'car',label:'자차 보유',options:[{v:'yes',l:'있음 🚙'},{v:'no',l:'없음 🚇'}],
-   hint:'카시트 포함 여부에 영향'},
-  {id:'budget',label:'전체 예산',options:[{v:'300',l:'30만 이하 💸'},{v:'700',l:'70만 이하 💰'},{v:'1500',l:'150만 이하 💳'},{v:'unlimited',l:'제한 없음 ✨'}],
-   hint:'예산 알림 표시'},
-  {id:'gift',label:'선물 예정 아이템',options:[{v:'stroller',l:'유모차 🍼'},{v:'carseat',l:'카시트 🚗'},{v:'crib',l:'침대 🛏️'},{v:'none',l:'선물 없음'}],
-   hint:'선물 예정 아이템 제외 가능'},
-  {id:'experience',label:'출산 경험',options:[{v:'first',l:'첫째 👶'},{v:'second',l:'둘째 이상 👨‍👩‍👧'}],
-   hint:'보유 중인 아이템 재활용 고려'}
-];
-
-// ── STATE ──
-var state = {
-  selections: {},   // itemId -> 'steady'|'value'
-  excluded: {},     // itemId -> true
-  answers: {},      // questionId -> answer value
-  activeCategory: 'all',
-  purchased: {},    // itemId -> true
-  coupangLinks: {}, // itemId_type -> url
-  adminStats: {visitors:0,clicks:0,saves:0}
+// STATE
+var state={
+  selections:{},  // itemId -> {type:'s'|'v', idx:0|1|2} | null (미선택)
+  excluded:{},
+  answers:{},
+  activeCategory:'all',
+  purchased:{},
+  coupangLinks:{},
+  adminStats:{visitors:0,clicks:0,saves:0}
 };
 
-// ── INIT ──
-function init() {
+var currentModalItemId = null;
+var currentModalTab = 's';
+
+function init(){
   loadFromStorage();
-  // Default all items to steady
-  ITEMS.forEach(function(item) {
-    if (!state.selections[item.id]) state.selections[item.id] = 'steady';
-  });
   renderAll();
   trackVisit();
+  // 로고 5번 탭 = 관리자
+  var logoTapCount=0, logoTapTimer=null;
+  document.getElementById('logoEl').addEventListener('click',function(){
+    logoTapCount++;
+    clearTimeout(logoTapTimer);
+    if(logoTapCount>=5){logoTapCount=0;openAdmin();}
+    else logoTapTimer=setTimeout(function(){logoTapCount=0;},2000);
+  });
+  if(window.location.search.indexOf('admin')!==-1) window.addEventListener('load',function(){openAdmin();});
+  // 제품 모달 닫기
+  document.getElementById('prodModalClose').addEventListener('click',closeProdModal);
+  document.getElementById('prodModalOverlay').addEventListener('click',function(e){if(e.target===document.getElementById('prodModalOverlay'))closeProdModal();});
+  // 최종 모달 닫기
+  document.getElementById('finalModalClose').addEventListener('click',closeFinalModal);
+  document.getElementById('finalModalOverlay').addEventListener('click',function(e){if(e.target===document.getElementById('finalModalOverlay'))closeFinalModal();});
 }
 
-function loadFromStorage() {
-  try {
-    var s = localStorage.getItem('planner_state');
-    if (s) {
-      var parsed = JSON.parse(s);
-      state.selections = parsed.selections || {};
-      state.excluded = parsed.excluded || {};
-      state.answers = parsed.answers || {};
-      state.purchased = parsed.purchased || {};
-    }
-    var links = localStorage.getItem('planner_links');
-    if (links) state.coupangLinks = JSON.parse(links);
-    var stats = localStorage.getItem('planner_stats');
-    if (stats) state.adminStats = JSON.parse(stats);
-  } catch(e) {}
+function loadFromStorage(){
+  try{
+    var s=localStorage.getItem('planner_v3');
+    if(s){var p=JSON.parse(s);state.selections=p.selections||{};state.excluded=p.excluded||{};state.answers=p.answers||{};state.purchased=p.purchased||{};}
+    var lnk=localStorage.getItem('planner_links_v3');
+    if(lnk)state.coupangLinks=JSON.parse(lnk);
+    var st=localStorage.getItem('planner_stats');
+    if(st)state.adminStats=JSON.parse(st);
+  }catch(e){}
 }
-
-function saveToStorage() {
-  try {
-    localStorage.setItem('planner_state', JSON.stringify({
-      selections: state.selections,
-      excluded: state.excluded,
-      answers: state.answers,
-      purchased: state.purchased
-    }));
-    state.adminStats.saves = (state.adminStats.saves || 0) + 1;
-    localStorage.setItem('planner_stats', JSON.stringify(state.adminStats));
-  } catch(e) {}
+function saveToStorage(){
+  try{
+    localStorage.setItem('planner_v3',JSON.stringify({selections:state.selections,excluded:state.excluded,answers:state.answers,purchased:state.purchased}));
+    state.adminStats.saves=(state.adminStats.saves||0)+1;
+    localStorage.setItem('planner_stats',JSON.stringify(state.adminStats));
+  }catch(e){}
 }
+function trackVisit(){try{state.adminStats.visitors=(state.adminStats.visitors||0)+1;localStorage.setItem('planner_stats',JSON.stringify(state.adminStats));}catch(e){}}
+function trackClick(){try{state.adminStats.clicks=(state.adminStats.clicks||0)+1;localStorage.setItem('planner_stats',JSON.stringify(state.adminStats));}catch(e){}}
 
-function trackVisit() {
-  try {
-    state.adminStats.visitors = (state.adminStats.visitors || 0) + 1;
-    localStorage.setItem('planner_stats', JSON.stringify(state.adminStats));
-  } catch(e) {}
-}
-
-function trackClick(itemId, type) {
-  try {
-    state.adminStats.clicks = (state.adminStats.clicks || 0) + 1;
-    localStorage.setItem('planner_stats', JSON.stringify(state.adminStats));
-  } catch(e) {}
-}
-
-// ── CONDITIONAL LOGIC ──
-function isItemVisible(item) {
-  if (!item.conditional) return true;
-  if (item.conditional === 'breastfeed') {
-    var a = state.answers['feeding_type'];
-    if (!a) return true;
-    return a === 'breastfeed' || a === 'mixed';
-  }
-  if (item.conditional === 'winter') {
-    var b = state.answers['season'];
-    if (!b) return true;
-    return b === 'winter';
-  }
-  if (item.conditional === 'outing_active') {
-    var c = state.answers['outing'];
-    if (!c) return true;
-    return c === 'active' || c === 'medium';
-  }
-  if (item.conditional === 'car') {
-    var d = state.answers['car'];
-    if (!d) return true;
-    return d === 'yes';
-  }
+function isItemVisible(item){
+  if(!item.conditional)return true;
+  if(item.conditional==='breastfeed'){var a=state.answers['feeding_type'];if(!a)return true;return a==='breastfeed'||a==='mixed';}
+  if(item.conditional==='winter'){var b=state.answers['season'];if(!b)return true;return b==='winter';}
+  if(item.conditional==='outing_active'){var c=state.answers['outing'];if(!c)return true;return c==='active'||c==='medium';}
+  if(item.conditional==='car'){var d=state.answers['car'];if(!d)return true;return d==='yes';}
   return true;
 }
 
-// ── PRICE CALC ──
-function calcTotals() {
-  var steadyTotal = 0;
-  var myTotal = 0;
-  var activeItems = 0;
-  ITEMS.forEach(function(item) {
-    if (!isItemVisible(item)) return;
-    if (state.excluded[item.id]) return;
-    activeItems++;
-    steadyTotal += item.steady.price;
-    var sel = state.selections[item.id] || 'steady';
-    if (sel === 'steady') {
-      myTotal += item.steady.price;
-    } else {
-      myTotal += item.value.price;
-    }
+function getSelPrice(item){
+  var sel=state.selections[item.id];
+  if(!sel)return item.steady[0].price; // 미선택이면 스테디 1위 기준
+  var prods=sel.type==='s'?item.steady:item.value;
+  return prods[sel.idx].price;
+}
+function getSteadyBase(item){return item.steady[0].price;}
+
+function calcTotals(){
+  var st=0,my=0;
+  ITEMS.forEach(function(item){
+    if(!isItemVisible(item)||state.excluded[item.id])return;
+    st+=getSteadyBase(item);
+    my+=getSelPrice(item);
   });
-  return {steadyTotal: steadyTotal, myTotal: myTotal, save: steadyTotal - myTotal, activeItems: activeItems};
+  return{steadyTotal:st,myTotal:my,save:st-my};
 }
 
-// ── FORMAT ──
-function fmtPrice(n) {
-  if (n >= 10000) {
-    var man = Math.floor(n / 10000);
-    var rem = n % 10000;
-    if (rem === 0) return man + '만원';
-    return man + '만 ' + rem.toLocaleString() + '원';
-  }
-  return n.toLocaleString() + '원';
+function fmtPrice(n){
+  if(n>=10000){var m=Math.floor(n/10000),r=n%10000;return r===0?m+'만원':m+'만 '+r.toLocaleString()+'원';}
+  return n.toLocaleString()+'원';
+}
+
+function getDispName(itemId,type,idx,fallback){
+  return state.coupangLinks[itemId+'_'+type+idx+'_name']||fallback;
+}
+function getLink(itemId,type,idx){
+  return state.coupangLinks[itemId+'_'+type+idx]||'';
 }
 
 // ── RENDER ALL ──
-function renderAll() {
-  renderBudget();
-  renderAccordion();
-  renderCategoryChips();
-  renderItems();
-  renderProgress();
+function renderAll(){renderBudget();renderAccordion();renderCategoryChips();renderItems();renderProgress();}
+
+function renderBudget(){
+  var t=calcTotals();
+  document.getElementById('currentTotal').textContent=fmtPrice(t.myTotal);
+  document.getElementById('saveAmount').textContent=t.save>0?fmtPrice(t.save):'0원';
+  document.getElementById('steadyTotalLabel').textContent=fmtPrice(t.steadyTotal);
+  document.getElementById('myTotalLabel').textContent=fmtPrice(t.myTotal);
+  var pct=t.steadyTotal>0?Math.round(t.myTotal/t.steadyTotal*100):100;
+  document.getElementById('steadyBar').style.width='100%';
+  document.getElementById('myBar').style.width=pct+'%';
+}
+function renderProgress(){
+  var total=ITEMS.filter(function(i){return isItemVisible(i);}).length;
+  var done=ITEMS.filter(function(i){return isItemVisible(i)&&state.purchased[i.id];}).length;
+  var pct=total>0?Math.round(done/total*100):0;
+  document.getElementById('progressFill').style.width=pct+'%';
+  document.getElementById('progressText').textContent='구매 완료 '+pct+'%';
+  document.getElementById('progressCount').textContent=done+' / '+total+'개';
 }
 
-// ── BUDGET ──
-function renderBudget() {
-  var t = calcTotals();
-  document.getElementById('currentTotal').textContent = fmtPrice(t.myTotal);
-  document.getElementById('saveAmount').textContent = t.save > 0 ? fmtPrice(t.save) : '0원';
-  document.getElementById('steadyTotalLabel').textContent = fmtPrice(t.steadyTotal);
-  document.getElementById('myTotalLabel').textContent = fmtPrice(t.myTotal);
-  // bars
-  var pct = t.steadyTotal > 0 ? Math.round(t.myTotal / t.steadyTotal * 100) : 100;
-  document.getElementById('steadyBar').style.width = '100%';
-  document.getElementById('myBar').style.width = pct + '%';
-}
-
-// ── PROGRESS ──
-function renderProgress() {
-  var total = ITEMS.filter(function(i) { return isItemVisible(i); }).length;
-  var done = ITEMS.filter(function(i) { return isItemVisible(i) && state.purchased[i.id]; }).length;
-  var pct = total > 0 ? Math.round(done / total * 100) : 0;
-  document.getElementById('progressFill').style.width = pct + '%';
-  document.getElementById('progressText').textContent = '구매 완료 ' + pct + '%';
-  document.getElementById('progressCount').textContent = done + ' / ' + total + '개';
-}
-
-// ── ACCORDION ──
-function renderAccordion() {
-  var wrap = document.getElementById('accordionWrap');
-  var html = '';
-  QUESTIONS.forEach(function(q, idx) {
-    var ans = state.answers[q.id];
-    var ansLabel = '';
-    if (ans) {
-      var found = q.options.find(function(o) { return o.v === ans; });
-      if (found) ansLabel = '<span class="accordion-q-check">✔ ' + found.l + '</span>';
-    }
-    var bodyClass = 'accordion-body';
-    html += '<div class="accordion-item">';
-    html += '<div class="accordion-head" onclick="toggleAccordion(' + idx + ')">';
-    html += '<div class="accordion-head-left">';
-    html += '<span class="accordion-q-num">' + (idx + 1) + '</span>';
-    html += '<span class="accordion-q-text">' + q.label + '</span>' + ansLabel;
-    html += '</div>';
-    html += '<span class="accordion-arrow" id="arrow' + idx + '">▼</span>';
-    html += '</div>';
-    html += '<div class="' + bodyClass + '" id="abody' + idx + '">';
-    html += '<div class="q-options">';
-    q.options.forEach(function(opt) {
-      var sel = state.answers[q.id] === opt.v ? ' selected' : '';
-      html += '<div class="q-opt' + sel + '" onclick="selectAnswer(\'' + q.id + '\',\'' + opt.v + '\',' + idx + ')">' + opt.l + '</div>';
+function renderAccordion(){
+  var wrap=document.getElementById('accordionWrap'),html='';
+  QUESTIONS.forEach(function(q,idx){
+    var ans=state.answers[q.id],ansLabel='';
+    if(ans){var f=q.options.find(function(o){return o.v===ans;});if(f)ansLabel='<span class="accordion-q-check">✔ '+f.l+'</span>';}
+    html+='<div class="accordion-item">';
+    html+='<div class="accordion-head" onclick="toggleAccordion('+idx+')">';
+    html+='<div class="accordion-head-left"><span class="accordion-q-num">'+(idx+1)+'</span><span class="accordion-q-text">'+q.label+'</span>'+ansLabel+'</div>';
+    html+='<span class="accordion-arrow" id="arrow'+idx+'">▼</span></div>';
+    html+='<div class="accordion-body" id="abody'+idx+'">';
+    html+='<div class="q-options">';
+    q.options.forEach(function(opt){
+      var sel=state.answers[q.id]===opt.v?' selected':'';
+      html+='<div class="q-opt'+sel+'" onclick="selectAnswer(\''+q.id+'\',\''+opt.v+'\','+idx+')">'+opt.l+'</div>';
     });
-    html += '</div>';
-    if (q.hint) html += '<div class="q-hint">💡 ' + q.hint + '</div>';
-    html += '</div></div>';
+    html+='</div>';
+    if(q.hint)html+='<div class="q-hint">💡 '+q.hint+'</div>';
+    html+='</div></div>';
   });
-  wrap.innerHTML = html;
+  wrap.innerHTML=html;
 }
-
-function toggleAccordion(idx) {
-  var body = document.getElementById('abody' + idx);
-  var arrow = document.getElementById('arrow' + idx);
-  var isOpen = body.classList.contains('open');
-  body.classList.toggle('open', !isOpen);
-  arrow.classList.toggle('open', !isOpen);
+function toggleAccordion(idx){
+  var body=document.getElementById('abody'+idx),arrow=document.getElementById('arrow'+idx);
+  var open=body.classList.contains('open');
+  body.classList.toggle('open',!open);arrow.classList.toggle('open',!open);
 }
+function selectAnswer(qid,val,idx){state.answers[qid]=val;saveToStorage();renderAll();}
 
-function selectAnswer(qid, val, idx) {
-  state.answers[qid] = val;
-  saveToStorage();
-  renderAll();
-}
-
-// ── CATEGORY CHIPS ──
-function renderCategoryChips() {
-  var wrap = document.getElementById('categoryChips');
-  var html = '';
-  CATEGORIES.forEach(function(cat) {
-    var count = 0;
-    if (cat.id === 'all') {
-      count = ITEMS.filter(function(i) { return isItemVisible(i); }).length;
-    } else {
-      count = ITEMS.filter(function(i) { return i.cat === cat.id && isItemVisible(i); }).length;
-    }
-    var active = state.activeCategory === cat.id ? ' active' : '';
-    html += '<div class="chip' + active + '" onclick="setCategory(\'' + cat.id + '\')">';
-    html += cat.emoji + ' ' + cat.label + ' <span class="chip-count">(' + count + ')</span>';
-    html += '</div>';
+function renderCategoryChips(){
+  var wrap=document.getElementById('categoryChips'),html='';
+  CATEGORIES.forEach(function(cat){
+    var count=cat.id==='all'?ITEMS.filter(function(i){return isItemVisible(i);}).length:ITEMS.filter(function(i){return i.cat===cat.id&&isItemVisible(i);}).length;
+    var active=state.activeCategory===cat.id?' active':'';
+    html+='<div class="chip'+active+'" onclick="setCategory(\''+cat.id+'\')">'+cat.emoji+' '+cat.label+' <span class="chip-count">('+count+')</span></div>';
   });
-  wrap.innerHTML = html;
+  wrap.innerHTML=html;
 }
+function setCategory(catId){state.activeCategory=catId;renderCategoryChips();renderItems();}
 
-function setCategory(catId) {
-  state.activeCategory = catId;
-  renderCategoryChips();
-  renderItems();
-}
-
-// ── ITEMS ──
-function renderItems() {
-  var grid = document.getElementById('itemsGrid');
-  var filtered = ITEMS.filter(function(item) {
-    if (!isItemVisible(item)) return false;
-    if (state.activeCategory !== 'all' && item.cat !== state.activeCategory) return false;
+function renderItems(){
+  var grid=document.getElementById('itemsGrid');
+  var filtered=ITEMS.filter(function(item){
+    if(!isItemVisible(item))return false;
+    if(state.activeCategory!=='all'&&item.cat!==state.activeCategory)return false;
     return true;
   });
-  if (filtered.length === 0) {
-    grid.innerHTML = '<div class="empty-state"><div class="empty-state-icon">🔍</div><div>조건에 맞는 아이템이 없어요</div></div>';
-    return;
+  if(filtered.length===0){grid.innerHTML='<div class="empty-state"><div class="empty-state-icon">🔍</div><div>조건에 맞는 아이템이 없어요</div></div>';return;}
+  grid.innerHTML=filtered.map(buildItemCard).join('');
+}
+
+function getCatLabel(cat){var f=CATEGORIES.find(function(c){return c.id===cat;});return f?f.emoji+' '+f.label:cat;}
+
+function buildItemCard(item){
+  var excluded=!!state.excluded[item.id];
+  var sel=state.selections[item.id]||null;
+  var excLabel=excluded?'↩ 복원':'− 제외';
+  var excClass=excluded?'item-exclude-btn restore':'item-exclude-btn';
+
+  var html='<div class="item-card'+(excluded?' excluded':'')+'" id="card-'+item.id+'">';
+  // 헤더
+  html+='<div class="item-card-head">';
+  html+='<span class="item-cat-badge cat-'+item.cat+'">'+getCatLabel(item.cat)+'</span>';
+  html+='<span class="item-name-head">'+item.name+'</span>';
+  if(item.conditional)html+='<span style="font-size:11px;color:var(--orange);margin-right:4px">📌</span>';
+  html+='<button class="'+excClass+'" onclick="toggleExclude(\''+item.id+'\')">'+excLabel+'</button>';
+  html+='</div>';
+
+  // 선택된 제품 표시 (선택 후에만)
+  if(sel){
+    var prods=sel.type==='s'?item.steady:item.value;
+    var prod=prods[sel.idx];
+    var dispName=getDispName(item.id,sel.type,sel.idx,prod.name);
+    var barClass=sel.type==='s'?'item-selected-prod type-s':'item-selected-prod type-v';
+    var selIcon=sel.type==='s'?'👑':'💡';
+    html+='<div class="'+barClass+'">';
+    html+='<div><div class="sel-prod-name">'+selIcon+' '+dispName+'</div>';
+    html+='<div class="sel-prod-price">'+fmtPrice(prod.price)+' 선택됨</div></div>';
+    html+='<button class="change-prod-btn" onclick="openProdModal(\''+item.id+'\',\''+sel.type+'\')">변경하기 ✏️</button>';
+    html+='</div>';
   }
-  var html = '';
-  filtered.forEach(function(item) {
-    html += buildItemCard(item);
-  });
-  grid.innerHTML = html;
-}
 
-function getCatClass(cat) {
-  return 'cat-' + cat;
-}
+  // 스테디 / 가성비 선택 버튼
+  html+='<div class="item-type-btns">';
 
-function getCatLabel(cat) {
-  var found = CATEGORIES.find(function(c) { return c.id === cat; });
-  return found ? found.emoji + ' ' + found.label : cat;
-}
+  // 스테디 버튼 (노란색)
+  var sBtnClass='type-btn steady-btn'+(sel&&sel.type==='s'?' steady-selected':'');
+  var sSubText=sel&&sel.type==='s'?getDispName(item.id,'s',sel.idx,item.steady[sel.idx].name):'3개 비교 후 선택';
+  html+='<button class="'+sBtnClass+'" onclick="openProdModal(\''+item.id+'\',\'s\')">';
+  html+='<span class="type-btn-icon">👑</span>';
+  html+='<span class="type-btn-label">스테디셀러</span>';
+  html+='<span class="type-btn-sub">'+sSubText+'</span>';
+  html+='</button>';
 
-function buildItemCard(item) {
-  var excluded = !!state.excluded[item.id];
-  var sel = state.selections[item.id] || 'steady';
-  var excludeLabel = excluded ? '↩ 복원' : '− 제외';
-  var excludeClass = excluded ? 'item-exclude-btn restore' : 'item-exclude-btn';
-  var saveAmt = item.steady.price - item.value.price;
+  // 가성비 버튼 (연두색)
+  var vBtnClass='type-btn value-btn'+(sel&&sel.type==='v'?' value-selected':'');
+  var vSubText=sel&&sel.type==='v'?getDispName(item.id,'v',sel.idx,item.value[sel.idx].name):'3개 비교 후 선택';
+  html+='<button class="'+vBtnClass+'" onclick="openProdModal(\''+item.id+'\',\'v\')">';
+  html+='<span class="type-btn-icon">💡</span>';
+  html+='<span class="type-btn-label">가성비</span>';
+  html+='<span class="type-btn-sub">'+vSubText+'</span>';
+  html+='</button>';
 
-  var steadyClass = 'item-opt' + (sel === 'steady' ? ' selected-steady' : '');
-  var valueClass = 'item-opt' + (sel === 'value' ? ' selected-value' : '');
-
-  var steadyCheck = sel === 'steady' ? '<div class="item-opt-check">✅</div>' : '';
-  var valueCheck = sel === 'value' ? '<div class="item-opt-check">✅</div>' : '';
-
-  var steadyLink = state.coupangLinks[item.id + '_steady'] || '';
-  var valueLink = state.coupangLinks[item.id + '_value'] || '';
-  var steadyDisplayName = state.coupangLinks[item.id + '_steady_name'] || item.steady.name;
-  var valueDisplayName = state.coupangLinks[item.id + '_value_name'] || item.value.name;
-  var steadyCoupang = steadyLink ? '<div class="item-opt-coupang"><a href="' + steadyLink + '" target="_blank" class="coupang-btn" onclick="trackClick(\'' + item.id + '\',\'steady\')">🛒 쿠팡 구매</a></div>' : '<div class="item-opt-coupang"><span class="coupang-btn" style="cursor:default;opacity:.5">🔗 링크 미설정</span></div>';
-  var valueCoupang = valueLink ? '<div class="item-opt-coupang"><a href="' + valueLink + '" target="_blank" class="coupang-btn" onclick="trackClick(\'' + item.id + '\',\'value\')">🛒 쿠팡 구매</a></div>' : '<div class="item-opt-coupang"><span class="coupang-btn" style="cursor:default;opacity:.5">🔗 링크 미설정</span></div>';
-
-  var html = '<div class="item-card' + (excluded ? ' excluded' : '') + '" id="card-' + item.id + '">';
-  html += '<div class="item-card-head">';
-  html += '<span class="item-cat-badge ' + getCatClass(item.cat) + '">' + getCatLabel(item.cat) + '</span>';
-  html += '<span class="item-name">' + item.name + '</span>';
-  if (item.conditional) html += '<span style="font-size:11px;color:#ff8c00;margin-right:8px">📌 조건부</span>';
-  html += '<button class="' + excludeClass + '" onclick="toggleExclude(\'' + item.id + '\')">' + excludeLabel + '</button>';
-  html += '</div>';
-
-  html += '<div class="item-options">';
-  // Steady (left)
-  html += '<div class="' + steadyClass + '" onclick="selectOption(\'' + item.id + '\',\'steady\')" id="opt-' + item.id + '-steady">';
-  html += steadyCheck;
-  html += '<div class="item-opt-badge badge-steady">👑 스테디셀러</div>';
-  html += '<div class="item-opt-name">' + steadyDisplayName + '</div>';
-  html += '<div class="item-opt-brand">' + item.steady.brand + '</div>';
-  html += '<div class="item-opt-price">' + fmtPrice(item.steady.price) + '</div>';
-  html += '<div class="item-opt-review">' + item.steady.review + '</div>';
-  html += '<div class="item-opt-review" style="color:var(--text2)">' + item.steady.tip + '</div>';
-  html += steadyCoupang;
-  html += '</div>';
-
-  // Value (right)
-  html += '<div class="' + valueClass + '" onclick="selectOption(\'' + item.id + '\',\'value\')" id="opt-' + item.id + '-value">';
-  html += valueCheck;
-  html += '<div class="item-opt-badge badge-value">💡 가성비</div>';
-  html += '<div class="item-opt-name">' + valueDisplayName + '</div>';
-  html += '<div class="item-opt-brand">' + item.value.brand + '</div>';
-  html += '<div class="item-opt-price">' + fmtPrice(item.value.price) + '</div>';
-  html += '<div class="item-opt-save">👑 대비 ' + fmtPrice(saveAmt) + ' 절약</div>';
-  html += '<div class="item-opt-review">' + item.value.review + '</div>';
-  html += '<div class="item-opt-review" style="color:var(--text2)">' + item.value.tip + '</div>';
-  html += valueCoupang;
-  html += '</div>';
-
-  html += '</div></div>';
+  html+='</div>';
+  html+='</div>';
   return html;
 }
 
-function selectOption(itemId, type) {
-  if (state.excluded[itemId]) return;
-  state.selections[itemId] = type;
-  saveToStorage();
-  renderBudget();
-  // Re-render just the card efficiently
-  var item = ITEMS.find(function(i) { return i.id === itemId; });
-  if (item) {
-    var card = document.getElementById('card-' + itemId);
-    if (card) card.outerHTML = buildItemCard(item);
-  }
+function toggleExclude(itemId){
+  state.excluded[itemId]=!state.excluded[itemId];
+  saveToStorage();renderBudget();renderProgress();renderCategoryChips();
+  var item=ITEMS.find(function(i){return i.id===itemId;});
+  if(item){var card=document.getElementById('card-'+itemId);if(card){var tmp=document.createElement('div');tmp.innerHTML=buildItemCard(item);card.replaceWith(tmp.firstChild);}}
 }
 
-function toggleExclude(itemId) {
-  state.excluded[itemId] = !state.excluded[itemId];
-  saveToStorage();
-  renderBudget();
-  renderProgress();
-  renderCategoryChips();
-  var item = ITEMS.find(function(i) { return i.id === itemId; });
-  if (item) {
-    var card = document.getElementById('card-' + itemId);
-    if (card) card.outerHTML = buildItemCard(item);
-  }
+// ── 제품 선택 팝업 모달 ──
+function openProdModal(itemId,tab){
+  currentModalItemId=itemId;
+  currentModalTab=tab;
+  var item=ITEMS.find(function(i){return i.id===itemId;});
+  if(!item)return;
+  document.getElementById('prodModalTitle').textContent=item.name+' 제품 선택';
+  renderProdModal();
+  document.getElementById('prodModalOverlay').classList.add('open');
+}
+function closeProdModal(){
+  document.getElementById('prodModalOverlay').classList.remove('open');
+  currentModalItemId=null;
+}
+function switchProdModalTab(tab){
+  currentModalTab=tab;
+  renderProdModal();
 }
 
-// ── MODAL ──
-function openModal() {
-  var overlay = document.getElementById('modalOverlay');
-  overlay.classList.add('open');
-  renderModal();
-}
+function renderProdModal(){
+  var itemId=currentModalItemId;
+  var tab=currentModalTab;
+  var item=ITEMS.find(function(i){return i.id===itemId;});
+  if(!item)return;
+  var sel=state.selections[itemId]||null;
+  var html='';
 
-function closeModal() {
-  var overlay = document.getElementById('modalOverlay');
-  overlay.classList.remove('open');
-}
+  // 탭
+  html+='<div class="pm-tabs">';
+  html+='<button class="pm-tab'+(tab==='s'?' act-s':'')+'" onclick="switchProdModalTab(\'s\')">👑 스테디셀러 3개</button>';
+  html+='<button class="pm-tab'+(tab==='v'?' act-v':'')+'" onclick="switchProdModalTab(\'v\')">💡 가성비 3개</button>';
+  html+='</div>';
 
-document.getElementById('modalCloseBtn').addEventListener('click', function() {
-  closeModal();
-});
-
-document.getElementById('modalOverlay').addEventListener('click', function(e) {
-  if (e.target === document.getElementById('modalOverlay')) {
-    closeModal();
-  }
-});
-
-function renderModal() {
-  var t = calcTotals();
-  var activeItems = ITEMS.filter(function(i) { return isItemVisible(i) && !state.excluded[i.id]; });
-  var purchasedCount = activeItems.filter(function(i) { return state.purchased[i.id]; }).length;
-  var purchasePct = activeItems.length > 0 ? Math.round(purchasedCount / activeItems.length * 100) : 0;
-
-  var html = '';
-
-  // Stats
-  html += '<div class="modal-stats">';
-  html += '<div class="stat-card"><div class="stat-val">' + activeItems.length + '</div><div class="stat-label">총 아이템</div></div>';
-  html += '<div class="stat-card"><div class="stat-val" style="font-size:16px">' + fmtPrice(t.myTotal) + '</div><div class="stat-label">최종 예산</div></div>';
-  html += '<div class="stat-card"><div class="stat-val" style="color:var(--orange)">' + fmtPrice(t.save) + '</div><div class="stat-label">절약 금액</div></div>';
-  html += '</div>';
-
-  // Purchase progress
-  html += '<div class="purchase-progress">';
-  html += '<div class="purchase-progress-label"><span>🛒 구매 진행률</span><span>' + purchasedCount + '/' + activeItems.length + '개 완료</span></div>';
-  html += '<div class="purchase-bar"><div class="purchase-fill" style="width:' + purchasePct + '%"></div></div>';
-  html += '</div>';
-
-  // Items
-  activeItems.forEach(function(item) {
-    var sel = state.selections[item.id] || 'steady';
-    var opt = sel === 'steady' ? item.steady : item.value;
-    var isPurchased = !!state.purchased[item.id];
-    var link = state.coupangLinks[item.id + '_' + sel] || '';
-    html += '<div class="modal-item">';
-    html += '<div class="modal-check ' + (isPurchased ? 'checked' : '') + '" onclick="togglePurchased(\'' + item.id + '\')">' + (isPurchased ? '✓' : '') + '</div>';
-    html += '<div class="modal-item-info">';
-    html += '<div class="modal-item-name">' + item.name + '</div>';
-    html += '<div class="modal-item-sub">' + (sel === 'steady' ? '👑 ' : '💡 ') + opt.name + ' · ' + opt.brand + '</div>';
-    html += '</div>';
-    html += '<div class="modal-item-price">' + fmtPrice(opt.price) + '</div>';
-    if (link) {
-      html += '<a href="' + link + '" target="_blank" class="modal-item-buy">🛒 구매</a>';
-    } else {
-      html += '<button class="modal-item-buy" style="opacity:.4;cursor:default">🛒 구매</button>';
-    }
-    html += '</div>';
+  // 비교표
+  var cmpData=tab==='s'?item.compare.s:item.compare.v;
+  var cmpProds=tab==='s'?item.steady:item.value;
+  html+='<div class="pm-compare">';
+  html+='<div class="pm-compare-title">📊 '+(tab==='s'?'스테디셀러':'가성비')+' 항목별 비교</div>';
+  html+='<table><thead><tr><th>항목</th><th>1위 → 2위 → 3위</th></tr></thead><tbody>';
+  cmpData.forEach(function(row){
+    html+='<tr><td>'+row.icon+' '+row.key+'</td><td>';
+    html+='<div class="rank-list">';
+    html+='<div class="rank-item"><span class="rank-medal">🥇</span>'+getDispName(itemId,tab,0,cmpProds[0].name)+'</div>';
+    html+='<div class="rank-item"><span class="rank-medal">🥈</span>'+getDispName(itemId,tab,1,cmpProds[1].name)+'</div>';
+    html+='<div class="rank-item"><span class="rank-medal">🥉</span>'+getDispName(itemId,tab,2,cmpProds[2].name)+'</div>';
+    html+='</div></td></tr>';
   });
+  html+='</tbody></table></div>';
 
-  // Share
-  html += '<div class="share-section">';
-  html += '<div class="share-title">📤 목록 공유하기</div>';
-  html += '<div class="share-btns">';
-  html += '<div class="share-btn" onclick="shareKakao()"><div class="share-btn-icon">💬</div>카카오톡</div>';
-  html += '<div class="share-btn" onclick="shareSMS()"><div class="share-btn-icon">📱</div>문자</div>';
-  html += '<div class="share-btn" onclick="shareInsta()"><div class="share-btn-icon">📸</div>인스타</div>';
-  html += '<div class="share-btn" onclick="copyLink()"><div class="share-btn-icon">🔗</div>링크복사</div>';
-  html += '</div>';
-  html += '<div style="margin-top:12px">';
-  html += '<button class="btn btn-ghost" style="width:100%;justify-content:center" onclick="showSaveHint()">📷 이미지 저장</button>';
-  html += '</div>';
-  html += '</div>';
+  // 제품 카드 3개
+  html+='<div class="pm-prod-list">';
+  var prods=tab==='s'?item.steady:item.value;
+  prods.forEach(function(prod,i){
+    var isSelected=sel&&sel.type===tab&&sel.idx===i;
+    var cardClass='pm-prod-card'+(isSelected?(tab==='s'?' sel-s':' sel-v'):'');
+    var badgeClass=tab==='s'?'badge-s':'badge-v';
+    var badgeLabel=(tab==='s'?'👑 스테디':'💡 가성비')+' '+(i+1)+'위';
+    var dotClass=tab==='s'?'dot-s':'dot-v';
+    var dispName=getDispName(itemId,tab,i,prod.name);
+    var link=getLink(itemId,tab,i);
+    var saveAmt=tab==='v'?(getSteadyBase(item)-prod.price):0;
+    var btnClass=tab==='s'?'pm-select-btn pm-sbtn-s':'pm-select-btn pm-sbtn-v';
+    var btnLabel=isSelected?'✅ 선택됨':'이 제품으로 선택';
 
-  document.getElementById('modalBody').innerHTML = html;
+    html+='<div class="'+cardClass+'">';
+    html+='<div class="pm-prod-top" onclick="selectProdInModal(\''+itemId+'\',\''+tab+'\','+i+')">';
+    html+='<div class="pm-prod-head"><span class="pm-badge '+badgeClass+'">'+badgeLabel+'</span><div class="pm-chk">'+(isSelected?'✓':'')+'</div></div>';
+    html+='<div class="pm-prod-name">'+dispName+'</div>';
+    html+='<div class="pm-prod-brand">'+prod.brand+'</div>';
+    html+='<div class="pm-prod-pts">';
+    prod.pts.forEach(function(pt){html+='<div class="pm-prod-pt"><span class="'+dotClass+'"></span>'+pt+'</div>';});
+    html+='</div>';
+    html+='<div class="pm-price-row">';
+    html+='<div><div class="pm-price">'+fmtPrice(prod.price)+'</div>';
+    if(saveAmt>0)html+='<div class="pm-save">👑 대비 '+fmtPrice(saveAmt)+' 절약</div>';
+    html+='</div>';
+    if(link){
+      html+='<a href="'+link+'" target="_blank" class="pm-detail-btn" onclick="trackClick()">🔍 상세 정보 보기</a>';
+    }else{
+      html+='<span class="pm-detail-btn" style="opacity:.35;cursor:default">🔍 상세 정보 보기</span>';
+    }
+    html+='</div></div>';
+    html+='<div class="pm-divider"></div>';
+    html+='<div class="pm-select-area"><button class="'+btnClass+'" onclick="selectProdInModal(\''+itemId+'\',\''+tab+'\','+i+')">'+btnLabel+'</button></div>';
+    html+='</div>';
+  });
+  html+='</div>';
+  document.getElementById('prodModalBody').innerHTML=html;
 }
 
-function togglePurchased(itemId) {
-  state.purchased[itemId] = !state.purchased[itemId];
+function selectProdInModal(itemId,type,idx){
+  state.selections[itemId]={type:type,idx:idx};
   saveToStorage();
-  renderModal();
-  renderProgress();
+  renderBudget();
+  // 카드 업데이트
+  var item=ITEMS.find(function(i){return i.id===itemId;});
+  if(item){var card=document.getElementById('card-'+itemId);if(card){var tmp=document.createElement('div');tmp.innerHTML=buildItemCard(item);card.replaceWith(tmp.firstChild);}}
+  // 팝업 업데이트
+  renderProdModal();
+  var prods=type==='s'?item.steady:item.value;
+  showToast((type==='s'?'👑 ':'💡 ')+getDispName(itemId,type,idx,prods[idx].name)+' 선택됨!');
 }
 
-// ── SHARE ──
-function getShareText() {
-  var t = calcTotals();
-  var lines = ['👶 출산준비물 목록 (총 ' + fmtPrice(t.myTotal) + ' | 절약 ' + fmtPrice(t.save) + ')'];
-  ITEMS.forEach(function(item) {
-    if (!isItemVisible(item) || state.excluded[item.id]) return;
-    var sel = state.selections[item.id] || 'steady';
-    var opt = sel === 'steady' ? item.steady : item.value;
-    lines.push('• ' + item.name + ': ' + opt.name + ' ' + fmtPrice(opt.price));
+// ── 최종 목록 모달 ──
+function openFinalModal(){document.getElementById('finalModalOverlay').classList.add('open');renderFinalModal();}
+function closeFinalModal(){document.getElementById('finalModalOverlay').classList.remove('open');}
+
+function renderFinalModal(){
+  var t=calcTotals();
+  var activeItems=ITEMS.filter(function(i){return isItemVisible(i)&&!state.excluded[i.id];});
+  var done=activeItems.filter(function(i){return state.purchased[i.id];}).length;
+  var pct=activeItems.length>0?Math.round(done/activeItems.length*100):0;
+  var html='';
+  html+='<div class="modal-stats">';
+  html+='<div class="stat-card"><div class="stat-val">'+activeItems.length+'</div><div class="stat-label">총 아이템</div></div>';
+  html+='<div class="stat-card"><div class="stat-val" style="font-size:14px">'+fmtPrice(t.myTotal)+'</div><div class="stat-label">최종 예산</div></div>';
+  html+='<div class="stat-card"><div class="stat-val" style="color:var(--orange);font-size:14px">'+fmtPrice(t.save)+'</div><div class="stat-label">절약 금액</div></div>';
+  html+='</div>';
+  html+='<div class="purchase-progress"><div class="purchase-progress-label"><span>🛒 구매 진행률</span><span>'+done+'/'+activeItems.length+'개</span></div><div class="purchase-bar"><div class="purchase-fill" style="width:'+pct+'%"></div></div></div>';
+  activeItems.forEach(function(item){
+    var sel=state.selections[item.id]||null;
+    var prod,dispName,selIcon;
+    if(sel){
+      var prods=sel.type==='s'?item.steady:item.value;
+      prod=prods[sel.idx];
+      dispName=getDispName(item.id,sel.type,sel.idx,prod.name);
+      selIcon=sel.type==='s'?'👑':'💡';
+    }else{
+      prod=item.steady[0];dispName=getDispName(item.id,'s',0,prod.name);selIcon='👑';
+    }
+    var isPurchased=!!state.purchased[item.id];
+    var link=sel?getLink(item.id,sel.type,sel.idx):'';
+    html+='<div class="modal-item">';
+    html+='<div class="modal-check'+(isPurchased?' checked':'')+'" onclick="togglePurchased(\''+item.id+'\')">'+(isPurchased?'✓':'')+'</div>';
+    html+='<div class="modal-item-info"><div class="modal-item-name">'+item.name+'</div><div class="modal-item-sub">'+selIcon+' '+dispName+' · '+prod.brand+'</div></div>';
+    html+='<div class="modal-item-price">'+fmtPrice(prod.price)+'</div>';
+    if(link){html+='<a href="'+link+'" target="_blank" class="modal-item-buy" onclick="trackClick()">🛒 구매하기</a>';}
+    else{html+='<button class="modal-item-buy disabled">🛒 구매하기</button>';}
+    html+='</div>';
+  });
+  html+='<div class="share-section"><div class="share-title">📤 목록 공유하기</div><div class="share-btns">';
+  html+='<div class="share-btn" onclick="shareKakao()"><div class="share-btn-icon">💬</div>카카오톡</div>';
+  html+='<div class="share-btn" onclick="shareSMS()"><div class="share-btn-icon">📱</div>문자</div>';
+  html+='<div class="share-btn" onclick="shareInsta()"><div class="share-btn-icon">📸</div>인스타</div>';
+  html+='<div class="share-btn" onclick="copyLink()"><div class="share-btn-icon">🔗</div>링크복사</div>';
+  html+='</div>';
+  html+='<div style="margin-top:10px"><button class="btn" style="width:100%;justify-content:center;border:1.5px solid var(--border);color:var(--text2);background:#fff" onclick="showSaveHint()">📷 이미지 저장</button></div></div>';
+  document.getElementById('finalModalBody').innerHTML=html;
+}
+function togglePurchased(itemId){state.purchased[itemId]=!state.purchased[itemId];saveToStorage();renderFinalModal();renderProgress();}
+
+// SHARE
+function getShareText(){
+  var t=calcTotals();
+  var lines=['👶 출산준비물 목록 (총 '+fmtPrice(t.myTotal)+' | 절약 '+fmtPrice(t.save)+')'];
+  ITEMS.forEach(function(item){
+    if(!isItemVisible(item)||state.excluded[item.id])return;
+    var sel=state.selections[item.id]||null;
+    var prod=sel?(sel.type==='s'?item.steady:item.value)[sel.idx]:item.steady[0];
+    var n=sel?getDispName(item.id,sel.type,sel.idx,prod.name):getDispName(item.id,'s',0,prod.name);
+    lines.push('• '+item.name+': '+n+' '+fmtPrice(prod.price));
   });
   lines.push('\n출산준비물 플래너에서 만들었어요 🎀');
   return lines.join('\n');
 }
+function shareKakao(){if(navigator.share){navigator.share({title:'출산준비물 목록',text:getShareText()}).catch(function(){});}else{copyText(getShareText());showToast('📋 복사됨! 카카오톡에 붙여넣기 하세요');}}
+function shareSMS(){window.open('sms:?body='+encodeURIComponent(getShareText()));}
+function shareInsta(){copyText(getShareText());showToast('📋 복사됨! 인스타에 붙여넣기 하세요');}
+function copyLink(){copyText(window.location.href);showToast('🔗 링크 복사됨!');}
+function copyText(t){if(navigator.clipboard){navigator.clipboard.writeText(t).catch(function(){fb(t)});}else{fb(t);}}
+function fb(t){var e=document.createElement('textarea');e.value=t;e.style.position='fixed';e.style.opacity='0';document.body.appendChild(e);e.select();document.execCommand('copy');document.body.removeChild(e);}
+function showSaveHint(){showToast('📱 꾹 눌러서 스크린샷으로 저장해주세요 (전원+볼륨 다운)');}
 
-function shareKakao() {
-  var text = getShareText();
-  if (navigator.share) {
-    navigator.share({title: '출산준비물 목록', text: text}).catch(function() {});
-  } else {
-    copyTextToClipboard(text);
-    showToast('📋 텍스트가 복사됐어요! 카카오톡에 붙여넣기 하세요');
-  }
+// ADMIN
+var ADMIN_PW='baby2024!';
+function openAdmin(){document.getElementById('pwInput').value='';document.getElementById('pwError').textContent='';document.getElementById('pwInput').classList.remove('error');document.getElementById('pwOverlay').classList.add('open');setTimeout(function(){document.getElementById('pwInput').focus();},100);}
+function closePwModal(){document.getElementById('pwOverlay').classList.remove('open');}
+function checkAdminPw(){
+  var val=document.getElementById('pwInput').value;
+  if(val===ADMIN_PW){closePwModal();document.getElementById('adminOverlay').classList.add('open');renderAdminStats();renderAdminTable();}
+  else{var inp=document.getElementById('pwInput'),err=document.getElementById('pwError');inp.classList.add('error');err.textContent='❌ 비밀번호가 틀렸어요';inp.value='';setTimeout(function(){inp.classList.remove('error');},400);}
 }
-
-function shareSMS() {
-  var text = encodeURIComponent(getShareText());
-  window.open('sms:?body=' + text);
+function closeAdmin(){document.getElementById('adminOverlay').classList.remove('open');}
+function renderAdminStats(){
+  var s=state.adminStats;
+  document.getElementById('adminStats').innerHTML=
+    '<div class="admin-stat"><div class="admin-stat-val">'+(s.visitors||0)+'</div><div class="admin-stat-label">총 방문자</div></div>'+
+    '<div class="admin-stat"><div class="admin-stat-val">'+(s.clicks||0)+'</div><div class="admin-stat-label">쿠팡 클릭</div></div>'+
+    '<div class="admin-stat"><div class="admin-stat-val">'+(s.saves||0)+'</div><div class="admin-stat-label">저장 횟수</div></div>';
 }
-
-function shareInsta() {
-  copyTextToClipboard(getShareText());
-  showToast('📋 복사됐어요! 인스타그램 스토리에 붙여넣기 하세요');
-}
-
-function copyLink() {
-  copyTextToClipboard(window.location.href);
-  showToast('🔗 링크가 복사됐어요!');
-}
-
-function copyTextToClipboard(text) {
-  if (navigator.clipboard) {
-    navigator.clipboard.writeText(text).catch(function() {
-      fallbackCopy(text);
+function renderAdminTable(){
+  var html='';
+  ITEMS.forEach(function(item){
+    ['s','v'].forEach(function(t){
+      var prods=t==='s'?item.steady:item.value;
+      prods.forEach(function(prod,i){
+        var key=item.id+'_'+t+i;
+        var link=state.coupangLinks[key]||'';
+        var name=state.coupangLinks[key+'_name']||prod.name;
+        var typeLabel=t==='s'?'<span style="color:#fbbf24">👑 스테디 '+(i+1)+'위</span>':'<span style="color:#86efac">💡 가성비 '+(i+1)+'위</span>';
+        html+='<tr><td style="font-weight:600;color:#f1f5f9">'+item.name+'</td><td>'+typeLabel+'</td>';
+        html+='<td><input type="text" value="'+escAttr(name)+'" id="name-'+key+'"></td>';
+        html+='<td><input type="text" value="'+escAttr(link)+'" id="link-'+key+'" placeholder="https://link.coupang.com/..."></td></tr>';
+      });
     });
-  } else {
-    fallbackCopy(text);
-  }
-}
-
-function fallbackCopy(text) {
-  var el = document.createElement('textarea');
-  el.value = text;
-  el.style.position = 'fixed';
-  el.style.opacity = '0';
-  document.body.appendChild(el);
-  el.select();
-  document.execCommand('copy');
-  document.body.removeChild(el);
-}
-
-function showSaveHint() {
-  showToast('📱 꾹 눌러서 스크린샷으로 저장해주세요 (전원+볼륨 다운)');
-}
-
-// ── TOAST ──
-function showToast(msg) {
-  var el = document.getElementById('toast');
-  el.textContent = msg;
-  el.classList.add('show');
-  setTimeout(function() { el.classList.remove('show'); }, 3000);
-}
-
-// ── ADMIN ──
-var ADMIN_PW = 'baby2024!';  // ← 여기서 비밀번호 변경 가능
-
-// 숨겨진 관리자 진입: URL에 ?admin 붙이거나 로고를 5번 연속 탭
-var logoTapCount = 0;
-var logoTapTimer = null;
-document.querySelector('.logo').addEventListener('click', function() {
-  logoTapCount++;
-  clearTimeout(logoTapTimer);
-  if (logoTapCount >= 5) {
-    logoTapCount = 0;
-    openAdmin();
-  } else {
-    logoTapTimer = setTimeout(function() { logoTapCount = 0; }, 2000);
-  }
-});
-
-// URL ?admin 으로 접근 시 자동 열기
-if (window.location.search.indexOf('admin') !== -1) {
-  window.addEventListener('load', function() { openAdmin(); });
-}
-
-function openAdmin() {
-  document.getElementById('pwInput').value = '';
-  document.getElementById('pwError').textContent = '';
-  document.getElementById('pwInput').classList.remove('error');
-  document.getElementById('pwOverlay').classList.add('open');
-  setTimeout(function() { document.getElementById('pwInput').focus(); }, 100);
-}
-
-function closePwModal() {
-  document.getElementById('pwOverlay').classList.remove('open');
-}
-
-function checkAdminPw() {
-  var val = document.getElementById('pwInput').value;
-  if (val === ADMIN_PW) {
-    closePwModal();
-    document.getElementById('adminOverlay').classList.add('open');
-    renderAdminStats();
-    renderAdminTable();
-  } else {
-    var input = document.getElementById('pwInput');
-    var err = document.getElementById('pwError');
-    input.classList.add('error');
-    err.textContent = '❌ 비밀번호가 틀렸어요';
-    input.value = '';
-    setTimeout(function() { input.classList.remove('error'); }, 400);
-  }
-}
-
-function closeAdmin() {
-  document.getElementById('adminOverlay').classList.remove('open');
-}
-
-function renderAdminStats() {
-  var s = state.adminStats;
-  var html = '';
-  html += '<div class="admin-stat"><div class="admin-stat-val">' + (s.visitors || 0) + '</div><div class="admin-stat-label">총 방문자</div></div>';
-  html += '<div class="admin-stat"><div class="admin-stat-val">' + (s.clicks || 0) + '</div><div class="admin-stat-label">쿠팡 클릭</div></div>';
-  html += '<div class="admin-stat"><div class="admin-stat-val">' + (s.saves || 0) + '</div><div class="admin-stat-label">저장 횟수</div></div>';
-  document.getElementById('adminStats').innerHTML = html;
-}
-
-function renderAdminTable() {
-  var html = '';
-  ITEMS.forEach(function(item) {
-    var sLink = state.coupangLinks[item.id + '_steady'] || '';
-    var vLink = state.coupangLinks[item.id + '_value'] || '';
-    var sSavedName = state.coupangLinks[item.id + '_steady_name'] || item.steady.name;
-    var vSavedName = state.coupangLinks[item.id + '_value_name'] || item.value.name;
-    html += '<tr>';
-    html += '<td style="font-weight:600;color:#f1f5f9">' + item.name + '</td>';
-    html += '<td style="color:#60a5fa;white-space:nowrap">👑 스테디</td>';
-    html += '<td><input type="text" value="' + escAttr(sSavedName) + '" id="name-' + item.id + '-steady" placeholder="상품명 직접 입력"></td>';
-    html += '<td><input type="text" value="' + escAttr(sLink) + '" id="link-' + item.id + '-steady" placeholder="https://link.coupang.com/..."></td>';
-    html += '</tr>';
-    html += '<tr>';
-    html += '<td></td>';
-    html += '<td style="color:#fb923c;white-space:nowrap">💡 가성비</td>';
-    html += '<td><input type="text" value="' + escAttr(vSavedName) + '" id="name-' + item.id + '-value" placeholder="상품명 직접 입력"></td>';
-    html += '<td><input type="text" value="' + escAttr(vLink) + '" id="link-' + item.id + '-value" placeholder="https://link.coupang.com/..."></td>';
-    html += '</tr>';
   });
-  document.getElementById('adminTableBody').innerHTML = html;
+  document.getElementById('adminTableBody').innerHTML=html;
 }
-
-function escAttr(str) {
-  return str.replace(/"/g, '&quot;').replace(/</g, '&lt;');
-}
-
-function saveAdminLinks() {
-  ITEMS.forEach(function(item) {
-    var sInput = document.getElementById('link-' + item.id + '-steady');
-    var vInput = document.getElementById('link-' + item.id + '-value');
-    var sNameInput = document.getElementById('name-' + item.id + '-steady');
-    var vNameInput = document.getElementById('name-' + item.id + '-value');
-    if (sInput) state.coupangLinks[item.id + '_steady'] = sInput.value.trim();
-    if (vInput) state.coupangLinks[item.id + '_value'] = vInput.value.trim();
-    if (sNameInput && sNameInput.value.trim()) state.coupangLinks[item.id + '_steady_name'] = sNameInput.value.trim();
-    if (vNameInput && vNameInput.value.trim()) state.coupangLinks[item.id + '_value_name'] = vNameInput.value.trim();
+function escAttr(s){return s.replace(/"/g,'&quot;').replace(/</g,'&lt;');}
+function saveAdminLinks(){
+  ITEMS.forEach(function(item){
+    ['s','v'].forEach(function(t){
+      [0,1,2].forEach(function(i){
+        var key=item.id+'_'+t+i;
+        var lEl=document.getElementById('link-'+key);
+        var nEl=document.getElementById('name-'+key);
+        if(lEl)state.coupangLinks[key]=lEl.value.trim();
+        if(nEl&&nEl.value.trim())state.coupangLinks[key+'_name']=nEl.value.trim();
+      });
+    });
   });
-  try {
-    localStorage.setItem('planner_links', JSON.stringify(state.coupangLinks));
-  } catch(e) {}
+  try{localStorage.setItem('planner_links_v3',JSON.stringify(state.coupangLinks));}catch(e){}
   renderItems();
-  showToast('✅ 상품명과 링크가 저장됐어요!');
+  showToast('✅ 저장됐어요!');
 }
-
-function exportCSV() {
-  var rows = [['아이템','타입','상품명','브랜드','가격','쿠팡URL']];
-  ITEMS.forEach(function(item) {
-    var sLink = state.coupangLinks[item.id + '_steady'] || '';
-    var vLink = state.coupangLinks[item.id + '_value'] || '';
-    rows.push([item.name,'스테디',item.steady.name,item.steady.brand,item.steady.price,sLink]);
-    rows.push([item.name,'가성비',item.value.name,item.value.brand,item.value.price,vLink]);
+function exportCSV(){
+  var rows=[['아이템','타입','순위','상품명','브랜드','가격','쿠팡URL']];
+  ITEMS.forEach(function(item){
+    ['s','v'].forEach(function(t){
+      var prods=t==='s'?item.steady:item.value;
+      prods.forEach(function(prod,i){
+        var key=item.id+'_'+t+i;
+        rows.push([item.name,t==='s'?'스테디':'가성비',i+1,state.coupangLinks[key+'_name']||prod.name,prod.brand,prod.price,state.coupangLinks[key]||'']);
+      });
+    });
   });
-  var csv = rows.map(function(r) { return r.map(function(c) { return '"' + String(c).replace(/"/g,'""') + '"'; }).join(','); }).join('\n');
-  var blob = new Blob(['\ufeff' + csv], {type:'text/csv;charset=utf-8'});
-  var a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'planner_links.csv';
-  a.click();
-  showToast('📥 CSV 파일이 다운로드됐어요!');
+  var csv=rows.map(function(r){return r.map(function(c){return '"'+String(c).replace(/"/g,'""')+'"';}).join(',');}).join('\n');
+  var blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'});
+  var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='planner_links.csv';a.click();
+  showToast('📥 CSV 다운로드됐어요!');
 }
 
-// ── START ──
+function showToast(msg){
+  var el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');
+  setTimeout(function(){el.classList.remove('show');},2500);
+}
+
 init();
 </script>
 </body>
